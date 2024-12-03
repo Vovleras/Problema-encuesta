@@ -1,41 +1,41 @@
 from clases import Encuestado, Pila
 
-def particionar(arr, bajo, alto):
-    i = bajo - 1
-    pivote = arr[alto]
+def particionar(array, p, r):
+    i= p - 1
+    pivote = array[r]
     
-    for j in range(bajo, alto):
-        if arr[j] < pivote:
+    for j in range(p, r):
+        if array[j] < pivote:
             i += 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i+1], arr[alto] = arr[alto], arr[i+1]
+            array[i], array[j] = array[j], array[i]
+    array[i+1], array[r] = array[r], array[i+1]
     return i + 1
 
-def quicksort(arr):
+def quicksort(array):
     pila = Pila()
     
-    # Empujar los valores iniciales de bajo y alto a la pila
+    # Empujar los valores iniciales de p y r a la pila
     pila.apilar(0)
-    pila.apilar(len(arr) - 1)
+    pila.apilar(len(array) - 1)
     
     # Mientras la pila no esté vacía
     while not pila.pila_vacia():
-        # Sacar los valores de alto y bajo de la pila
-        alto = pila.desapilar()
-        bajo = pila.desapilar()
+        # Sacar los valores de r y p de la pila
+        r = pila.desapilar()
+        p = pila.desapilar()
         
         # Obtener el índice de partición
-        p = particionar(arr, bajo, alto)
+        piv = particionar(array, p, r)
         
         # Si hay elementos a la izquierda del pivote, se empujan a la pila
-        if p - 1 > bajo:
-            pila.apilar(bajo)
-            pila.apilar(p - 1)
+        if piv - 1 > p:
+            pila.apilar(p)
+            pila.apilar(piv - 1)
         
         # Si hay elementos a la derecha del pivote, se empujan a la pila
-        if p + 1 < alto:
-            pila.apilar(p + 1)
-            pila.apilar(alto)
+        if piv + 1 < r:
+            pila.apilar(piv + 1)
+            pila.apilar(r)
 
 # Ejemplo de uso:
 encuestados = [
