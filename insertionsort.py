@@ -35,8 +35,9 @@ class ColaInsertionSort:
             elementos.append(self.queue[i])
             i = (i + 1) % self.max_length
             count += 1
-        for e in elementos:
-            print(e)
+        #for e in elementos:
+            #print(e)
+        return elementos
 
     def ordenar_insertion_sort(self):
         # Convertir la cola a una lista para aplicar Insertion Sort

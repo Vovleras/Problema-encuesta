@@ -23,6 +23,9 @@ class Pregunta:
         self.nombre = nombre
         self.encuestados = encuestados
 
+    def __repr__(self):
+        return f"({self.nombre}, {self.encuestados})"
+
     def promedio_opinion(self):
         return sum([enc.opinion for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0
 
