@@ -31,6 +31,13 @@ class Pregunta:
 
     def promedio_experticia(self):
         return sum([enc.experticia for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0
+    
+    def __lt__(self, other):
+        if self.promedio_opinion() != other.promedio_opinion():
+            return self.promedio_opinion() > other.promedio_opinion()
+        if self.promedio_experticia() != other.promedio_experticia():
+            return self.promedio_experticia() > other.promedio_experticia()
+        return len(self.encuestados) > len(other.encuestados)
 
 
 class Tema:
@@ -44,6 +51,12 @@ class Tema:
     def promedio_experticia(self):
         return sum([pregunta.promedio_experticia() for pregunta in self.preguntas]) / len(self.preguntas) if self.preguntas else 0
 
+    def __lt__(self, other):
+        if self.promedio_opinion() != other.promedio_opinion():
+            return self.promedio_opinion() > other.promedio_opinion()
+        if self.promedio_experticia() != other.promedio_experticia():
+            return self.promedio_experticia() > other.promedio_experticia()
+        return len(self.preguntas.encuestados) > len(other.preguntas.encuestados)
 
 class Pila:
     def __init__(self):

@@ -39,8 +39,8 @@ def ordenarPregunta(pregunta, personas, nomPreg):
     
     encuestadosOrden = ordenarPersonas(encuestadosDesorden)
 
-    preguntaLista = Pregunta(nomPreg, encuestadosOrden)
-    print(preguntaLista.promedio_opinion()) #Solo es de prueba
+    preguntaLista = Pregunta(nomPreg, encuestadosOrden) #Aqui esta solo una pregunta
+    #print(preguntaLista.promedio_opinion()) #Solo es de prueba
     #return encuestadosOrden
     return preguntaLista
 
@@ -50,14 +50,34 @@ def ordenarTema(cadaTema, encuestados):
     for i in cadaTema:
         preguntasOrden.append(ordenarPregunta(i, encuestados, nombrePregunta))
         nombrePregunta += 1
-    return preguntasOrden
+
+    # Crear la cola y cargar las preguntas
+    cola_preguntas = ColaInsertionSort(max_length=len(preguntasOrden) + 1)
+    for e in preguntasOrden:
+        cola_preguntas.enqueue(e)
+
+    # Ordenar
+    cola_preguntas.ordenar_insertion_sort()
+    pregOrdenadas = cola_preguntas.mostrar() #Aqui estan las preguntas ordenadas en el tema
+
+    #print(pregOrdenadas)
+    return pregOrdenadas
 
 def temas(info, totalEncuestados):
     temas = []
     for i in range(1, len(info)):
         temas.append(ordenarTema(info[i].split("\n"), totalEncuestados))
 
-    print("Temas", temas, "Fin temas")
+    # Crear la cola y cargar los encuestados
+    cola_temas = ColaInsertionSort(max_length=len(temas) + 1)
+    for t in temas:
+        cola_temas.enqueue(t)
+
+    # Ordenar
+    cola_temas.ordenar_insertion_sort()
+    temasOrdenados = cola_temas.mostrar()
+
+    print("Temas", temasOrdenados, "Fin temas")
 
 def asignarID(encuestadosSin):
     listaPersonas = encuestadosSin.split("\n")
