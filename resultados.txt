@@ -1,0 +1,26 @@
+Resultados de la encuesta
+[ 8.25 ] Tema 1
+  [ 9.5 ] Pregunta 1.1 : [2, 10]
+  [ 7.0 ] Pregunta 1.2 : [6, 12, 1, 9]
+
+[ 3.67 ] Tema 2
+  [ 7.0 ] Pregunta 2.2 : [8, 7, 11]
+  [ 0.33 ] Pregunta 2.1 : [4, 3, 5]
+
+Lista de encuestados
+ (2,  Alejandro Torres, 7, 10)
+ (6,  Sebastián Pérez, 8, 9)
+ (10,  Daniel Ruiz, 2, 9)
+ (12,  Lucas Vásquez, 6, 8)
+ (8,  Mateo González, 4, 7)
+ (7,  Camila Fernández, 2, 7)
+ (11,  Luciana Sánchez, 1, 7)
+ (1,  Sofía García, 1, 6)
+ (9,  Isabella Díaz, 7, 5)
+ (4,  Juan López, 10, 1)
+ (3,  Valentina Rodríguez, 9, 0)
+ (5,  Martina Martínez, 7, 0)
+
+Resultado:
+Encuestado con mayor opinion: (2,  Alejandro Torres, 7, 10)
+Encuestado con mayor opinion: (5,  Martina Martínez, 7, 0)

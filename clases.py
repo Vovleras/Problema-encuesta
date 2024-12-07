@@ -45,6 +45,9 @@ class Tema:
         self.nombre = nombre
         self.preguntas = preguntas
 
+    def __repr__(self):
+        return f"({self.nombre}, {self.preguntas})"
+
     def promedio_opinion(self):
         return sum([pregunta.promedio_opinion() for pregunta in self.preguntas]) / len(self.preguntas) if self.preguntas else 0
 
@@ -56,7 +59,7 @@ class Tema:
             return self.promedio_opinion() > other.promedio_opinion()
         if self.promedio_experticia() != other.promedio_experticia():
             return self.promedio_experticia() > other.promedio_experticia()
-        return len(self.preguntas.encuestados) > len(other.preguntas.encuestados)
+        return len(self.preguntas.encuestados) > len(other.preguntas.encuestados) #Corregir
 
 class Pila:
     def __init__(self):

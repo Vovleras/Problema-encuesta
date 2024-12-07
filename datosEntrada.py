@@ -2,6 +2,33 @@ import re
 from clases import *
 from insertionsort import *
 
+def escribir_resultado(listaTemas, encuestados):
+
+    enc_mayor = encuestados[0]
+    enc_menor = encuestados[len(encuestados)-1]
+
+    with open("resultados.txt", "w") as archivo:
+
+        archivo.write("Resultados de la encuesta")
+
+        for i in listaTemas:
+            promedio = round(i.promedio_opinion(), 2)
+            nombre = i.nombre
+            archivo.write(f"\n[ {promedio} ] Tema {nombre}\n")
+
+            for j in i.preguntas:
+                promedio_pregunta = round(j.promedio_opinion(), 2)
+                nombre_pregunta = j.nombre
+                id_encuestados = [enc.id for enc in j.encuestados]
+                archivo.write(f"  [ {promedio_pregunta} ] Pregunta {nombre_pregunta} : {id_encuestados}\n")
+
+        archivo.write("\nLista de encuestados\n")
+        [archivo.write(f" {enc_str}\n") for enc_str in encuestados]
+        archivo.write("\nResultado:\n")
+        archivo.write(f"Encuestado con mayor opinion: {enc_mayor}\n")
+        archivo.write(f"Encuestado con menor opinion: {enc_menor}\n")
+    print(1)
+
 def ordenarPersonas(listaDesordenada):
     #LLamar aqui al algoritmo de ordenamiento
     encuestados = []
@@ -44,11 +71,13 @@ def ordenarPregunta(pregunta, personas, nomPreg):
     #return encuestadosOrden
     return preguntaLista
 
-def ordenarTema(cadaTema, encuestados):
+def ordenarTema(cadaTema, encuestados, nombre):
+    nombre_tema = nombre
     nombrePregunta = 1 #Es el nombre de la pregunta, se debe modificar segun corresponda
     preguntasOrden = [] #Lista que contiene las preguntas ordenadas    
     for i in cadaTema:
-        preguntasOrden.append(ordenarPregunta(i, encuestados, nombrePregunta))
+        nombre_texto = str(nombre_tema) + "." + str(nombrePregunta)
+        preguntasOrden.append(ordenarPregunta(i, encuestados, nombre_texto))
         nombrePregunta += 1
 
     # Crear la cola y cargar las preguntas
@@ -60,13 +89,14 @@ def ordenarTema(cadaTema, encuestados):
     cola_preguntas.ordenar_insertion_sort()
     pregOrdenadas = cola_preguntas.mostrar() #Aqui estan las preguntas ordenadas en el tema
 
+    temaOrdenado = Tema(nombre_tema, pregOrdenadas)
     #print(pregOrdenadas)
-    return pregOrdenadas
+    return temaOrdenado
 
 def temas(info, totalEncuestados):
     temas = []
     for i in range(1, len(info)):
-        temas.append(ordenarTema(info[i].split("\n"), totalEncuestados))
+        temas.append(ordenarTema(info[i].split("\n"), totalEncuestados, i))
 
     # Crear la cola y cargar los encuestados
     cola_temas = ColaInsertionSort(max_length=len(temas) + 1)
@@ -78,6 +108,7 @@ def temas(info, totalEncuestados):
     temasOrdenados = cola_temas.mostrar()
 
     print("Temas", temasOrdenados, "Fin temas")
+    return temasOrdenados
 
 def asignarID(encuestadosSin):
     listaPersonas = encuestadosSin.split("\n")
@@ -97,9 +128,12 @@ def cargarArchivo():
     vectorInformacion = [elemento.strip() for elemento in contenido.split("\n\n")]
     encuestados = asignarID(vectorInformacion[0])
     totalEOrdenados = ordenarPersonas(encuestados)
+    
     print(totalEOrdenados)
     k = len(vectorInformacion) - 2
-    temas(vectorInformacion, encuestados)
+    resultado_temas = temas(vectorInformacion, encuestados)
+    escribir_resultado(resultado_temas, totalEOrdenados)
+    #escribir_promedios_op(totalEOrdenados, resultado_temas)
     
 
 cargarArchivo()
