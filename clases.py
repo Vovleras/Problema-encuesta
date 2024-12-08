@@ -10,7 +10,6 @@ class Encuestado:
     def __repr__(self):
         return f"({self.id}, Nombre: {self.nombre}, Experticia: {self.experticia}, Opinion: {self.opinion})"
 
-    
     def __lt__(self, other):
         if self.opinion != other.opinion:
             return self.opinion > other.opinion
