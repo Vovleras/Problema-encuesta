@@ -1,5 +1,3 @@
-
-
 class Pila:
     def __init__(self, size):
         self.pila= [None]*size
@@ -29,9 +27,18 @@ class Pila:
         if self.stackEmpty():
             raise Exception("Underflow")
         return self.pila[self.top]
-
+    
+    def __str__(self):
+        if self.stackEmpty():
+            return "Pila vacía"
+        else:
+            # Construir una lista de elementos no nulos desde el inicio hasta el tope
+            elementos = [self.pila[i] for i in range(self.top + 1)]
+            # Unir los elementos con un salto de línea
+            return "\n".join(str(e) for e in elementos)
+        
     def __repr__(self):
-        return f"Pila({self.pila})"
+        return f"Pila({self.pila[:self.top + 1]})"
 
 
 def accederPosicion(p, i):
@@ -69,16 +76,9 @@ def cambiar(i, j, A):
         A.push(p.pop())
     return A
 
-        
-p = Pila(5)
-p.push(10)
-p.push(20)
-p.push(30)
-p.push(40)
 
-print("Elemento en la posicion 2:", accederPosicion(p, 2))
-print("Pila despues de acceder:", p)
-print("Pila despues de cambiar: ", cambiar(0,3,p))
+
+
 
 def PARTITION(A,p,r):
     x = accederPosicion(A,p)
@@ -114,23 +114,3 @@ def QUICKSORT(A, p , r):
         q = PARTITION(A,p,r)
         QUICKSORT(A,p,q)
         QUICKSORT(A,q+1,r)
-        
-        
-        
-A = Pila(9)
-A.push(5)
-A.push(3)
-A.push(2)
-A.push(6)
-A.push(4)
-A.push(1)
-A.push(3)
-A.push(7)
-        
-QUICKSORT(A, 0, A.top)
-print(A)
-
-
-
-
-    

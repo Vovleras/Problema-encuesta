@@ -1,5 +1,3 @@
-# clases.py
-
 class Encuestado:
     def __init__(self, id, nombre, experticia, opinion):
         self.id = id
@@ -22,12 +20,22 @@ class Pregunta:
     def __init__(self, nombre, encuestados):
         self.nombre = nombre
         self.encuestados = encuestados
+    
+    def __repr__(self):
+        return f"({self.nombre}, {self.encuestados})"
 
     def promedio_opinion(self):
         return sum([enc.opinion for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0
 
     def promedio_experticia(self):
         return sum([enc.experticia for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0
+    
+    def __lt__(self, other):
+        if self.promedio_opinion() != other.promedio_opinion():
+            return self.promedio_opinion() > other.promedio_opinion()
+        if self.promedio_experticia() != other.promedio_experticia():
+            return self.promedio_experticia() > other.promedio_experticia()
+        return len(self.encuestados) > len(other.encuestados)
 
 
 class Tema:
@@ -40,28 +48,10 @@ class Tema:
 
     def promedio_experticia(self):
         return sum([pregunta.promedio_experticia() for pregunta in self.preguntas]) / len(self.preguntas) if self.preguntas else 0
-
-
-class Pila:
-    def __init__(self):
-        self.items = []
-
-    def pila_vacia(self):
-        return len(self.items) == 0
-
-    def apilar(self, item):
-        self.items.append(item)
-
-    def desapilar(self):
-        if not self.pila_vacia():
-            return self.items.pop()
-        else:
-            raise IndexError("La pila esta vacia")
-
-    def tope(self):
-        if not self.pila_vacia():
-            return self.items[-1]
-        else:
-            raise InterruptedError("La pila esta vacia")
-    def size_pila(self):
-        return len(self.items)
+    
+    def __lt__(self, other):
+        if self.promedio_opinion() != other.promedio_opinion():
+            return self.promedio_opinion() > other.promedio_opinion()
+        if self.promedio_experticia() != other.promedio_experticia():
+            return self.promedio_experticia() > other.promedio_experticia()
+        return len([pregunta.encuestados for pregunta in self.preguntas]) > len([pregunta.encuestados for pregunta in other.preguntas])
