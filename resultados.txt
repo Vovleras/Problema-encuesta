@@ -1,7 +1,7 @@
 Resultados de la encuesta
-[ 8.25 ] Tema 1
+[ 7.92 ] Tema 1
   [ 9.5 ] Pregunta 1.1 : [2, 10]
-  [ 7.0 ] Pregunta 1.2 : [6, 12, 1, 9]
+  [ 6.33 ] Pregunta 1.2 : [12, 1, 9]
 
 [ 3.67 ] Tema 2
   [ 7.0 ] Pregunta 2.2 : [8, 7, 11]
