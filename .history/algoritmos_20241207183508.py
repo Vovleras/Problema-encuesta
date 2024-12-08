@@ -83,25 +83,20 @@ print("Pila despues de cambiar: ", cambiar(0,3,p))
 def PARTITION(A,p,r):
     x = accederPosicion(A,p)
     
-    i = p-1
-    j = r+1
+    i = p
+    j = r
 
-    
-    while True:
-        j -=1
-        while j >= p and accederPosicion(A, j) > x:
-            j -= 1
-            
-    
-        i+=1  
-        while i <= r and accederPosicion(A,i) < x:
-            i += 1
+   
+    while j > p and accederPosicion(A, j) <= x:
+        j -= 1
         
-        if i< j:
-            cambiar(i,j,A)
-
-        else:
-            return j
+    while i< r and accederPosicion(A,i) >= x:
+        i += 1
+        print("estoy")
+    if i< j:
+        cambiar(i,j,A)
+    else:
+        return j
         
          
          
@@ -118,17 +113,16 @@ def QUICKSORT(A, p , r):
         
         
 A = Pila(9)
-A.push(5)
+A.push(1)
+A.push(10)
+A.push(9)
 A.push(3)
 A.push(2)
-A.push(6)
-A.push(4)
-A.push(1)
+A.push(8)
 A.push(3)
-A.push(7)
+A.push(9)
         
-QUICKSORT(A, 0, A.top)
-print(A)
+print(QUICKSORT(A, 0, 8))
 
 
 

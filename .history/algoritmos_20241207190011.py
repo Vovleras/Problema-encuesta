@@ -82,6 +82,7 @@ print("Pila despues de cambiar: ", cambiar(0,3,p))
 
 def PARTITION(A,p,r):
     x = accederPosicion(A,p)
+    print("x",x)
     
     i = p-1
     j = r+1
@@ -127,7 +128,7 @@ A.push(1)
 A.push(3)
 A.push(7)
         
-QUICKSORT(A, 0, A.top)
+print(PARTITION(A, 0, 7))
 print(A)
 
 
