@@ -15,6 +15,7 @@ class Encuestado:
         if self.experticia != other.experticia:
             return self.experticia > other.experticia
         return self.id > other.id
+    
 
 class Pregunta:
     def __init__(self, nombre, encuestados):
@@ -25,6 +26,9 @@ class Pregunta:
         return f"({self.nombre}, {self.encuestados})"
 
     def promedio_opinion(self):
+        print(f"Calculando promedio de opinión para la pregunta: {self.nombre}")
+        if self.encuestados:
+            print(f"Encuestados: {[enc.nombre for enc in self.encuestados]}")
         return sum([enc.opinion for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0
 
     def promedio_experticia(self):
@@ -54,4 +58,4 @@ class Tema:
             return self.promedio_opinion() > other.promedio_opinion()
         if self.promedio_experticia() != other.promedio_experticia():
             return self.promedio_experticia() > other.promedio_experticia()
-        return len([pregunta.encuestados for pregunta in self.preguntas]) > len([pregunta.encuestados for pregunta in other.preguntas])
+        return sum(len(pregunta.encuestados) for pregunta in self.preguntas) > sum(len(pregunta.encuestados) for pregunta in other.preguntas)
