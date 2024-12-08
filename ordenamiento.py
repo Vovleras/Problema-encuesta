@@ -1,57 +1,52 @@
 from clases import Encuestado, Pila
 
-def particionar(array, p, r):
-    i= p - 1
-    pivote = array[r]
-    
+def quicksort(pila, p, r):
+    if p < r:
+        piv = particionar(pila, p, r)
+        quicksort(pila, p, piv - 1)
+        quicksort(pila, piv + 1, r)
+
+#Usa los métodos acceder_posicion e intercambiar_elementos para particionar la pila de manera correcta.
+def particionar(pila, p, r):
+    pivote = acceder_posicion(pila, r)
+    i = p - 1
+
     for j in range(p, r):
-        if array[j] < pivote:
+        if acceder_posicion(pila, j) < pivote:
             i += 1
-            array[i], array[j] = array[j], array[i]
-    array[i+1], array[r] = array[r], array[i+1]
+            intercambiar_elementos(pila, i, j)
+    
+    intercambiar_elementos(pila, i + 1, r)
     return i + 1
 
-def quicksort(array):
-    pila = Pila()
-    
-    # Empujar los valores iniciales de p y r a la pila
-    pila.apilar(0)
-    pila.apilar(len(array) - 1)
-    
-    # Mientras la pila no esté vacía
-    while not pila.pila_vacia():
-        # Sacar los valores de r y p de la pila
-        r = pila.desapilar()
-        p = pila.desapilar()
-        
-        # Obtener el índice de partición
-        piv = particionar(array, p, r)
-        
-        # Si hay elementos a la izquierda del pivote, se empujan a la pila
-        if piv - 1 > p:
-            pila.apilar(p)
-            pila.apilar(piv - 1)
-        
-        # Si hay elementos a la derecha del pivote, se empujan a la pila
-        if piv + 1 < r:
-            pila.apilar(piv + 1)
-            pila.apilar(r)
+#devuelve el elemento en la posición index sin modificar la pila.
+def acceder_posicion(pila, index):
+    return pila.items[index]
+
+#Intercambia los elementos en las posiciones i y j directamente en la pila items de la pila.
+def intercambiar_elementos(pila, i, j):
+    pila.items[i], pila.items[j] = pila.items[j], pila.items[i]
 
 # Ejemplo de uso:
-encuestados = [
-    Encuestado(1, "Sofia García", 1, 6), 
-    Encuestado(2, "Alejandro Torres", 7, 10), 
-    Encuestado(3, "Valentina Rodriguez", 9, 0), 
-    Encuestado(4, "Juan Lopéz", 10, 1), 
-    Encuestado(5, "Martina Martinez", 7, 0), 
-    Encuestado(6, "Sebastian Perez", 8, 9), 
-    Encuestado(7, "Camila Fernandez", 2, 7), 
-    Encuestado(8, "Mateo Gonzalez", 4, 7), 
-    Encuestado(9, "Isabella Díaz", 7, 5), 
-    Encuestado(10, "Daniel Ruiz", 2, 9), 
-    Encuestado(11, "Luciana Sanchez", 1, 7), 
-    Encuestado(12, "Lucas Vasquez", 6, 8),
-]
+encuestados = Pila()
+encuestados.apilar(Encuestado(1, "Sofia García", 1, 6))
+encuestados.apilar(Encuestado(2, "Alejandro Torres", 7, 10))
+encuestados.apilar(Encuestado(3, "Valentina Rodriguez", 9, 0))
+encuestados.apilar(Encuestado(4, "Juan Lopéz", 10, 1))
+encuestados.apilar(Encuestado(5, "Martina Martinez", 7, 0))
+encuestados.apilar(Encuestado(6, "Sebastian Perez", 8, 9))
+encuestados.apilar(Encuestado(7, "Camila Fernandez", 2, 7))
+encuestados.apilar(Encuestado(8, "Mateo Gonzalez", 4, 7))
+encuestados.apilar(Encuestado(9, "Isabella Díaz", 7, 5))
+encuestados.apilar(Encuestado(10, "Daniel Ruiz", 2, 9))
+encuestados.apilar(Encuestado(11, "Luciana Sanchez", 1, 7))
+encuestados.apilar(Encuestado(12, "Lucas Vasquez", 6, 8))
+encuestados.apilar(Encuestado(13,"Deiby Muñoz", 3, 7))
 
-quicksort(encuestados)
-print("Datos ordenados:", encuestados)
+quicksort(encuestados, 0, encuestados.size_pila() - 1)
+
+# Desapilar y mostrar los resultados ordenados
+resultados_ordenados = []
+while not encuestados.pila_vacia():
+    resultados_ordenados.append(encuestados.desapilar())
+print("Datos ordenados:", resultados_ordenados[::-1])

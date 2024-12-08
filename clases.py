@@ -63,3 +63,5 @@ class Pila:
             return self.items[-1]
         else:
             raise InterruptedError("La pila esta vacia")
+    def size_pila(self):
+        return len(self.items)
