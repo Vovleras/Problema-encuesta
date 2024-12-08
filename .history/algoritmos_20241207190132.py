@@ -1,4 +1,4 @@
-
+import copy
 
 class Pila:
     def __init__(self, size):

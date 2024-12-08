@@ -1,4 +1,4 @@
-
+import copy
 
 class Pila:
     def __init__(self, size):
@@ -127,7 +127,7 @@ A.push(1)
 A.push(3)
 A.push(7)
         
-QUICKSORT(A, 0, A.top)
+print(QUICKSORT(A, 0, A.top))
 print(A)
 
 

@@ -1,4 +1,4 @@
-
+import copy
 
 class Pila:
     def __init__(self, size):
@@ -78,35 +78,23 @@ p.push(40)
 
 print("Elemento en la posicion 2:", accederPosicion(p, 2))
 print("Pila despues de acceder:", p)
-print("Pila despues de cambiar: ", cambiar(0,3,p))
+print("Pila despues de cambias: 2", cambiar(0,3,p))
 
 def PARTITION(A,p,r):
     x = accederPosicion(A,p)
-    
     i = p-1
     j = r+1
-
-    
     while True:
-        j -=1
-        while j >= p and accederPosicion(A, j) > x:
+        while accederPosicion(A,j) <= x:
             j -= 1
-            
-    
-        i+=1  
-        while i <= r and accederPosicion(A,i) < x:
+        while accederPosicion(A,i) >= x:
             i += 1
-        
         if i< j:
             cambiar(i,j,A)
-
         else:
             return j
         
-         
-         
-
-          
+        
 
 
 def QUICKSORT(A, p , r):
@@ -117,20 +105,7 @@ def QUICKSORT(A, p , r):
         
         
         
-A = Pila(9)
-A.push(5)
-A.push(3)
-A.push(2)
-A.push(6)
-A.push(4)
-A.push(1)
-A.push(3)
-A.push(7)
         
-QUICKSORT(A, 0, A.top)
-print(A)
-
-
-
-
+        
+QUICKSORT()
     

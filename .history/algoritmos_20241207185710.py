@@ -1,4 +1,4 @@
-
+import copy
 
 class Pila:
     def __init__(self, size):
@@ -89,17 +89,18 @@ def PARTITION(A,p,r):
     
     while True:
         j -=1
-        while j >= p and accederPosicion(A, j) > x:
+        while j >= p and accederPosicion(A, j) <= x:
             j -= 1
-            
+            print("entre a j")
     
         i+=1  
-        while i <= r and accederPosicion(A,i) < x:
+        while i <= r and accederPosicion(A,i) >= x:
+            ("entre  a i")
             i += 1
         
         if i< j:
             cambiar(i,j,A)
-
+            print("entre a cambiar")
         else:
             return j
         
@@ -127,8 +128,7 @@ A.push(1)
 A.push(3)
 A.push(7)
         
-QUICKSORT(A, 0, A.top)
-print(A)
+print(PARTITION(A, 0, 7))
 
 
 

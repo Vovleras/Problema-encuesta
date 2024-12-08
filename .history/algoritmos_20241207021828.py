@@ -1,8 +1,8 @@
-
+import copy
 
 class Pila:
     def __init__(self, size):
-        self.pila= [None]*size
+        self.pila= []
         self.top = -1
         self.size = size
         
@@ -13,11 +13,9 @@ class Pila:
     def push(self,x):
         if self.top == self.size-1:
             raise Exception("Overflow")
-        else:
-            
-            self.top += 1
-            self.pila[self.top] = x 
-            
+        else: 
+            self.pila.append(x)
+            self.top+=1
 
     def pop(self):
         if self.stackEmpty():
@@ -35,40 +33,18 @@ class Pila:
 
 
 def accederPosicion(p, i):
-    
     elementos = Pila(p.size)
 
     while p.top >i:
         elementos.push(p.pop())
 
+    
     valor = p.peek()
     while not elementos.stackEmpty():
         p.push(elementos.pop())
-    
     return valor
        
     
-        
-
-    
-def cambiar(i, j, A):
-    p = Pila(A.size)
-    
-    valor_i = accederPosicion(A,i)
-    valor_j = accederPosicion(A,j)
-    while A.top > i - 1:
-        p.push(A.pop())
-        
-    A.push(valor_j)
-    p.pop()
-    while A.top < j-1:
-        A.push(p.pop())
-    A.push(valor_i)
-    p.pop()
-    while not p.stackEmpty():
-        A.push(p.pop())
-    return A
-
         
 p = Pila(5)
 p.push(10)
@@ -76,37 +52,51 @@ p.push(20)
 p.push(30)
 p.push(40)
 
-print("Elemento en la posicion 2:", accederPosicion(p, 2))
+# Acceder a una posición específica
+print("Elemento en la posicion 2:", accederPosicion(p, 2))  # Debería imprimir 30
+
+# Verificar que la pila no ha cambiado
 print("Pila despues de acceder:", p)
-print("Pila despues de cambiar: ", cambiar(0,3,p))
+
+def cambiar(i, j, A):
+    p = Pila(A.size)
+    pi = accederPosicion(A,i)
+    pj = accederPosicion(A,j)
+    while A.top > i - 1:
+        A.pop()
+    A.push(pj)
+    while A.top < j-1:
+        i += 1
+        A.push(accederPosicion(p,i))
+    A.push(pi)
+    while p.top > A.top:
+        j+=1
+        A.push(accederPosicion(p,j))
+    return A
+
+
+    
+print(cambiar(0,1,p))
+        
 
 def PARTITION(A,p,r):
     x = accederPosicion(A,p)
-    
     i = p-1
     j = r+1
-
-    
     while True:
-        j -=1
-        while j >= p and accederPosicion(A, j) > x:
+        while accederPosicion(A,j) <= x:
             j -= 1
-            
-    
-        i+=1  
-        while i <= r and accederPosicion(A,i) < x:
+        while accederPosicion(A,i) >= x:
             i += 1
-        
         if i< j:
-            cambiar(i,j,A)
-
-        else:
-            return j
+            1
+            #cambiar(i,j,A)
         
-         
-         
+        
 
-          
+    
+
+
 
 
 def QUICKSORT(A, p , r):
@@ -117,20 +107,7 @@ def QUICKSORT(A, p , r):
         
         
         
-A = Pila(9)
-A.push(5)
-A.push(3)
-A.push(2)
-A.push(6)
-A.push(4)
-A.push(1)
-A.push(3)
-A.push(7)
         
-QUICKSORT(A, 0, A.top)
-print(A)
-
-
-
-
+        
+    
     
