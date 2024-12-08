@@ -2,10 +2,37 @@ import re
 from clases import *
 from insertionsort import *
 
+def resultados_preguntas(temas):
+    total_preguntas = []
+
+    for t in temas:
+        for p in t.preguntas:
+            total_preguntas.append(p)
+
+    print(total_preguntas)
+    # Crear la cola y cargar las preguntas
+    cola_preguntas = ColaInsertionSort(max_length=len(total_preguntas) + 1)
+    for e in total_preguntas:
+        cola_preguntas.enqueue(e)
+
+    # Ordenar
+    cola_preguntas.ordenar_insertion_sort()
+    preg_ordenadas = cola_preguntas.mostrar() #Aqui estan las preguntas ordenadas en el tema
+
+    print(preg_ordenadas)
+    preg_mayor = preg_ordenadas[0]
+    preg_menor = preg_ordenadas[len(preg_ordenadas)-1]
+    return preg_mayor, preg_menor
+
 def escribir_resultado(listaTemas, encuestados):
 
     enc_mayor = encuestados[0]
     enc_menor = encuestados[len(encuestados)-1]
+
+    preg_mayor, preg_menor = resultados_preguntas(listaTemas)
+
+    prom_encuestados_op = round(sum([e.opinion for e in encuestados]) / len(encuestados), 2)
+    prom_encuestados_ex = round(sum([e.experticia for e in encuestados]) / len(encuestados), 2)
 
     with open("resultados.txt", "w") as archivo:
 
@@ -24,9 +51,13 @@ def escribir_resultado(listaTemas, encuestados):
 
         archivo.write("\nLista de encuestados\n")
         [archivo.write(f" {enc_str}\n") for enc_str in encuestados]
-        archivo.write("\nResultado:\n")
+        archivo.write("\nResultados:\n")
+        archivo.write(f"Pregunta con mayor opinion: [{round(preg_mayor.promedio_opinion(), 2)}] {preg_mayor.nombre}\n")
+        archivo.write(f"Pregunta con menor opinion: [{round(preg_menor.promedio_opinion(), 2)}] {preg_menor.nombre}\n")
         archivo.write(f"Encuestado con mayor opinion: {enc_mayor}\n")
         archivo.write(f"Encuestado con menor opinion: {enc_menor}\n")
+        archivo.write(f"Promedio de experticia de los encuestados: {prom_encuestados_ex}\n")
+        archivo.write(f"Promedio del valor de opinion de los encuestados: {prom_encuestados_op}\n")
     print(1)
 
 def ordenarPersonas(listaDesordenada):
