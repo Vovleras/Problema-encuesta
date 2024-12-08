@@ -17,6 +17,10 @@ class Encuestado:
         if self.experticia != other.experticia:
             return self.experticia > other.experticia
         return self.id > other.id
+    
+    @classmethod
+    def set_lt_method(cls, compare_fn):
+        cls.__lt__ = compare_fn
 
 class Pregunta:
     def __init__(self, nombre, encuestados):
@@ -39,6 +43,9 @@ class Pregunta:
             return self.promedio_experticia() > other.promedio_experticia()
         return len(self.encuestados) > len(other.encuestados)
 
+    @classmethod
+    def set_lt_method(cls, compare_fn):
+        cls.__lt__ = compare_fn
 
 class Tema:
     def __init__(self, nombre, preguntas):

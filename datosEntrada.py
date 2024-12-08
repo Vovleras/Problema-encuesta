@@ -2,6 +2,20 @@ import re
 from clases import *
 from insertionsort import *
 
+def enc_orden_experticia(encuestados):
+    # Crear la cola y cargar los encuestados
+    cola_encuestados = ColaInsertionSort(max_length=len(encuestados) + 1)
+    for e in encuestados:
+        cola_encuestados.enqueue(e)
+
+    #Modificar metodo de ordenamiento
+    Encuestado.set_lt_method(lambda self, other: self.experticia > other.experticia)
+
+    # Ordenar
+    cola_encuestados.ordenar_insertion_sort()
+    encuestadosOrdenados = cola_encuestados.mostrar()
+    return encuestadosOrdenados
+
 def resultados_preguntas(temas):
     total_preguntas = []
 
@@ -22,17 +36,33 @@ def resultados_preguntas(temas):
     print(preg_ordenadas)
     preg_mayor = preg_ordenadas[0]
     preg_menor = preg_ordenadas[len(preg_ordenadas)-1]
-    return preg_mayor, preg_menor
+
+    #Modificar metodo de ordenamiento
+    Pregunta.set_lt_method(lambda self, other: self.promedio_experticia() > other.promedio_experticia())
+    # Ordenar
+    cola_preguntas.ordenar_insertion_sort()
+    preg_ordenadas_exp = cola_preguntas.mostrar()
+    print(preg_ordenadas_exp)
+    preg_mayor_exp = preg_ordenadas_exp[0]
+    preg_menor_exp = preg_ordenadas_exp[len(preg_ordenadas)-1]
+
+    return preg_mayor, preg_menor, preg_mayor_exp, preg_menor_exp
 
 def escribir_resultado(listaTemas, encuestados):
 
     enc_mayor = encuestados[0]
     enc_menor = encuestados[len(encuestados)-1]
 
-    preg_mayor, preg_menor = resultados_preguntas(listaTemas)
+    ordenados_experticia = enc_orden_experticia(encuestados) #Encuestados ordenados por experticia
+    enc_mayor_ex = ordenados_experticia[0]
+    enc_menor_ex = ordenados_experticia[len(ordenados_experticia)-1]
+
+    preg_mayor, preg_menor, preg_mayor_ex, preg_menor_ex = resultados_preguntas(listaTemas)
 
     prom_encuestados_op = round(sum([e.opinion for e in encuestados]) / len(encuestados), 2)
     prom_encuestados_ex = round(sum([e.experticia for e in encuestados]) / len(encuestados), 2)
+
+
 
     with open("resultados.txt", "w") as archivo:
 
@@ -52,10 +82,14 @@ def escribir_resultado(listaTemas, encuestados):
         archivo.write("\nLista de encuestados\n")
         [archivo.write(f" {enc_str}\n") for enc_str in encuestados]
         archivo.write("\nResultados:\n")
-        archivo.write(f"Pregunta con mayor opinion: [{round(preg_mayor.promedio_opinion(), 2)}] {preg_mayor.nombre}\n")
-        archivo.write(f"Pregunta con menor opinion: [{round(preg_menor.promedio_opinion(), 2)}] {preg_menor.nombre}\n")
+        archivo.write(f"Pregunta con mayor promedio de opinion: [{round(preg_mayor.promedio_opinion(), 2)}] {preg_mayor.nombre}\n")
+        archivo.write(f"Pregunta con menor promedio de opinion: [{round(preg_menor.promedio_opinion(), 2)}] {preg_menor.nombre}\n")
+        archivo.write(f"Pregunta con mayor promedio de experticia: [{round(preg_mayor_ex.promedio_experticia(), 2)}] {preg_mayor_ex.nombre}\n")
+        archivo.write(f"Pregunta con menor promedio de experticia: [{round(preg_menor_ex.promedio_experticia(), 2)}] {preg_menor_ex.nombre}\n")
         archivo.write(f"Encuestado con mayor opinion: {enc_mayor}\n")
         archivo.write(f"Encuestado con menor opinion: {enc_menor}\n")
+        archivo.write(f"Encuestado con mayor experticia: {enc_mayor_ex}\n")
+        archivo.write(f"Encuestado con menor experticia: {enc_menor_ex}\n")
         archivo.write(f"Promedio de experticia de los encuestados: {prom_encuestados_ex}\n")
         archivo.write(f"Promedio del valor de opinion de los encuestados: {prom_encuestados_op}\n")
     print(1)

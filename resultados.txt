@@ -22,9 +22,13 @@ Lista de encuestados
  (5, Nombre:  Martina Martínez, Experticia: 7, Opinion: 0)
 
 Resultados:
-Pregunta con mayor opinion: [9.5] 1.1
-Pregunta con menor opinion: [0.33] 2.1
+Pregunta con mayor promedio de opinion: [9.5] 1.1
+Pregunta con menor promedio de opinion: [0.33] 2.1
+Pregunta con mayor promedio de experticia: [8.67] 2.1
+Pregunta con menor promedio de experticia: [2.33] 2.2
 Encuestado con mayor opinion: (2, Nombre:  Alejandro Torres, Experticia: 7, Opinion: 10)
 Encuestado con menor opinion: (5, Nombre:  Martina Martínez, Experticia: 7, Opinion: 0)
+Encuestado con mayor experticia: (4, Nombre:  Juan López, Experticia: 10, Opinion: 1)
+Encuestado con menor experticia: (1, Nombre:  Sofía García, Experticia: 1, Opinion: 6)
 Promedio de experticia de los encuestados: 5.33
 Promedio del valor de opinion de los encuestados: 5.75
