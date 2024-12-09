@@ -65,7 +65,7 @@ class Tema:
             return self.promedio_opinion() > other.promedio_opinion()
         if self.promedio_experticia() != other.promedio_experticia():
             return self.promedio_experticia() > other.promedio_experticia()
-        return len([pregunta.encuestados for pregunta in self.preguntas]) > len([pregunta.encuestados for pregunta in other.preguntas]) #Corregir
+        return sum(len([pregunta.encuestados for pregunta in self.preguntas])) > sum(len([pregunta.encuestados for pregunta in other.preguntas])) #Corregir
 
 class Pila:
     def __init__(self):

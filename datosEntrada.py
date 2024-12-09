@@ -173,7 +173,7 @@ def asignarID(encuestadosSin):
     return encuestadosDesorden
 
 def cargarArchivo(nombre):
-    with open(nombre, "r") as archivo:
+    with open(nombre, "r", errors="ignore") as archivo:
         contenido = archivo.read()
 
     vectorInformacion = [elemento.strip() for elemento in contenido.split("\n\n")]
@@ -186,3 +186,5 @@ def cargarArchivo(nombre):
     resultado_temas = temas(vectorInformacion, encuestados)
     escribir_resultado(resultado_temas, totalEOrdenados)
     
+nombreArchivo = input("Ingrese el nombre del archivo: ")
+cargarArchivo(nombreArchivo)
