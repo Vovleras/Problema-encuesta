@@ -6,8 +6,7 @@ with open('datos.txt', 'r', encoding='utf-8') as file:
     data = file.read()
 
 lines = data.split('\n')
-
-print(len(lines))
+print()
 
 # Inicializa una lista para almacenar los encuestados
 A = Pila(12)
@@ -121,5 +120,5 @@ promedio_experticia_total = (promedio_experticia_tema_1 + promedio_experticia_te
 
 print(A)
 QUICKSORT(A,0,11)
-print("me la chupa")
+print(A)
 print(A)

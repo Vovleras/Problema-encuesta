@@ -7,8 +7,6 @@ with open('datos.txt', 'r', encoding='utf-8') as file:
 
 lines = data.split('\n')
 
-print(len(lines))
-
 # Inicializa una lista para almacenar los encuestados
 A = Pila(12)
 
@@ -119,7 +117,6 @@ promedio_opinion_total = (promedio_opinion_tema_1 + promedio_opinion_tema_2) / 2
 promedio_experticia_total = (promedio_experticia_tema_1 + promedio_experticia_tema_2) / 2
 
 
-print(A)
-QUICKSORT(A,0,11)
-print("me la chupa")
-print(A)
+tema = Pila(2)
+accederPosicion(A,2)
+

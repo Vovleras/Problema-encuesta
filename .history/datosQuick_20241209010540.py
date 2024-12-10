@@ -7,8 +7,6 @@ with open('datos.txt', 'r', encoding='utf-8') as file:
 
 lines = data.split('\n')
 
-print(len(lines))
-
 # Inicializa una lista para almacenar los encuestados
 A = Pila(12)
 
@@ -94,7 +92,7 @@ def calcular_promedio(pila_pregunta, A, tipo='opinion'):
     else:
         return 0
 
- # Calcular el promedio para las opiniones de cada pregunta
+# Calcular el promedio para las opiniones de cada pregunta
 promedio_opinion_1_1 = calcular_promedio(pregunta_1_1, A, tipo='opinion')
 promedio_opinion_1_2 = calcular_promedio(pregunta_1_2, A, tipo='opinion')
 promedio_opinion_2_1 = calcular_promedio(pregunta_2_1, A, tipo='opinion')
@@ -117,9 +115,3 @@ promedio_experticia_tema_2 = (promedio_experticia_2_1 + promedio_experticia_2_2)
 # Promedio de los promedios de opinión y experticia
 promedio_opinion_total = (promedio_opinion_tema_1 + promedio_opinion_tema_2) / 2
 promedio_experticia_total = (promedio_experticia_tema_1 + promedio_experticia_tema_2) / 2
-
-
-print(A)
-QUICKSORT(A,0,11)
-print("me la chupa")
-print(A)

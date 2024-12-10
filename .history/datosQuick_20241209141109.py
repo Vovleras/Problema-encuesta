@@ -6,7 +6,6 @@ with open('datos.txt', 'r', encoding='utf-8') as file:
     data = file.read()
 
 lines = data.split('\n')
-
 print(len(lines))
 
 # Inicializa una lista para almacenar los encuestados

@@ -28,18 +28,15 @@ class Pila:
             raise Exception("Underflow")
         return self.pila[self.top]
     
-    """ def __str__(self):
+    def __str__(self):
         if self.stackEmpty():
             return "Pila vacía"
         else:
             elementos = [self.pila[i] for i in range(self.top + 1)]
-            return "\n".join(str(e) for e in elementos) """
-        
-    """ def __repr__(self):
-        return f"Pila({self.pila[:self.top + 1]})" """
+            return "\n".join(str(e) for e in elementos)
         
     def __repr__(self):
-        return repr(self.pila[:self.top + 1])
+        return f"Pila({self.pila[:self.top + 1]})"
 
 def accederPosicion(p, i):
     

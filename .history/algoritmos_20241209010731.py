@@ -28,18 +28,16 @@ class Pila:
             raise Exception("Underflow")
         return self.pila[self.top]
     
-    """ def __str__(self):
+    def __str__(self):
         if self.stackEmpty():
             return "Pila vacía"
         else:
             elementos = [self.pila[i] for i in range(self.top + 1)]
-            return "\n".join(str(e) for e in elementos) """
-        
-    """ def __repr__(self):
-        return f"Pila({self.pila[:self.top + 1]})" """
+            return "\n".join(str(e) for e in elementos)
         
     def __repr__(self):
-        return repr(self.pila[:self.top + 1])
+        return f"Pila({self.pila[:self.top + 1]})"
+
 
 def accederPosicion(p, i):
     
@@ -53,7 +51,11 @@ def accederPosicion(p, i):
         p.push(elementos.pop())
     
     return valor
+       
+    
         
+
+    
 def cambiar(i, j, A):
     p = Pila(A.size)
     
@@ -72,22 +74,39 @@ def cambiar(i, j, A):
         A.push(p.pop())
     return A
 
+
+
+
+
 def PARTITION(A,p,r):
-    x = accederPosicion(A,p)  
+    x = accederPosicion(A,p)
+    
     i = p-1
-    j = r+1 
+    j = r+1
+
+    
     while True:
         j -=1
         while j >= p and accederPosicion(A, j) > x:
             j -= 1
+            
+    
         i+=1  
         while i <= r and accederPosicion(A,i) < x:
-            i += 1    
+            i += 1
+        
         if i< j:
             cambiar(i,j,A)
+
         else:
             return j
         
+         
+         
+
+          
+
+
 def QUICKSORT(A, p , r):
     if p < r:
         q = PARTITION(A,p,r)

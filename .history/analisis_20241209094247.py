@@ -1,0 +1,3 @@
+def orderListByQuick(l):
+    
+    
