@@ -49,7 +49,7 @@ def obtener_data(nombre):
         encuestados_pila.push(encuestado)
 
     # Convertir cada lista de preguntas en pilas, donde cada pila de pregunta contiene los IDs de los encuestados
-    lista_tema_pilas = []
+    lista_tema_pilas = Pila(cantidad_temas)  # Crear una pila para los temas
     for tema in lista_tema:
         pila_tema = Pila(len(tema.preguntas))  # Crear una pila para cada tema
         for pregunta in tema.preguntas:
@@ -57,21 +57,22 @@ def obtener_data(nombre):
             for encuestado_id in pregunta.encuestados:
                 pila_pregunta.push(encuestado_id)  # Llenar la pila con los IDs de los encuestados
             pila_tema.push(pila_pregunta)  # Añadir la pila de la pregunta a la pila del tema
-        lista_tema_pilas.append(pila_tema)
+        lista_tema_pilas.push(pila_tema)  # Añadir la pila del tema a la pila de temas
 
     return [encuestados_pila, lista_tema_pilas]
 
 resultado = obtener_data('datos.txt')
 pila_encuestados = resultado[0]
-# Imprimir las Pilas
-print("Pila Encuestados:", resultado[0])
-print("Pila Tema 1:", resultado[1][0])
-print("Pila Tema 2:", resultado[1][1])
-print("Pila Pregunta 1.1:", resultado[1][0].pila[0])
-print("Pila Pregunta 1.2:", resultado[1][0].pila[1])
-print("Pila Pregunta 2.1:", resultado[1][1].pila[0])
-print("Pila Pregunta 2.2:", resultado[1][1].pila[1])
+pila_temas = resultado[1]
 
+# Imprimir las Pilas
+print("Pila Encuestados:", pila_encuestados)
+print("Pila Tema 1:", pila_temas.pila[0])
+print("Pila Tema 2:", pila_temas.pila[1])
+print("Pila Pregunta 1.1:", pila_temas.pila[0].pila[0])
+print("Pila Pregunta 1.2:", pila_temas.pila[0].pila[1])
+print("Pila Pregunta 2.1:", pila_temas.pila[1].pila[0])
+print("Pila Pregunta 2.2:", pila_temas.pila[1].pila[1])
 
 QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
 print(pila_encuestados)
