@@ -12,18 +12,20 @@ class Encuestado:
 
     
     def __lt__(self, other):
-        if Encuestado.criterio == "opinion":
+        
+        if self.criterio == "opinion":
             if self.opinion != other.opinion:
                 return self.opinion > other.opinion
             if self.experticia != other.experticia:
                 return self.experticia > other.experticia
             return self.id > other.id
 
-        elif Encuestado.criterio == "experticia":
+        elif self.criterio == "experticia":
             if self.experticia != other.experticia:
                 return self.experticia > other.experticia
             return self.id > other.id
-        
+    
+    
         
   
         

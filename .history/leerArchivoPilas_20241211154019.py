@@ -320,6 +320,8 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_temas,0,pila_temas.top)
     Encuestado.criterio = 'experticia'
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
+    
+    
     mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados)
     
     

@@ -236,8 +236,8 @@ def promedio_encuestados(encuestados,tipo):
         
             
         
-#Funcion que recibe una pila de tema, pila de encuestados, el mayor y menor encuestado segun opinion y experticia, promeido de experticia de los encuestados y promedio de  opinion de los encuestados
-# Retorna un archivo txt con toda la informacion de los parametros de entrada
+#Funcion que recibe una pila de tema, pila de encuestados, el mayor y menor encuestado segun opinion y experticia 
+# retorna un archivo txt con toda la informacion de salida
 def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados):
     
     global contador_archivos  
@@ -320,16 +320,24 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_temas,0,pila_temas.top)
     Encuestado.criterio = 'experticia'
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
+    
     mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados)
+    
     
     
     
 
  
-obtener_resultado('entrada_prueba_1.txt')  
+obtener_resultado('entrada_prueba_1.txt')
+""" print("\n")
+print("segundo archivo")
+print("\n")   
 obtener_resultado('entrada_prueba_2.txt')
+print("\n")
+print("Tercer archivo")
+print("\n")
 obtener_resultado('entrada_prueba_3.txt') 
- 
+ """
 
 
 

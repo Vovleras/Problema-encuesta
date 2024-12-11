@@ -249,7 +249,7 @@ def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, pr
     with open(archivo_nombre, "w", encoding="utf-8") as archivo:
        
         def escribir_en_archivo(*args, **kwargs):
-            print(*args, **kwargs, file=archivo)
+            print(*args, **kwargs, file=archivo, end='')
     
         escribir_en_archivo("Resultados de la encuesta")
         
@@ -320,7 +320,9 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_temas,0,pila_temas.top)
     Encuestado.criterio = 'experticia'
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
+    
     mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados)
+    
     
     
     

@@ -236,67 +236,38 @@ def promedio_encuestados(encuestados,tipo):
         
             
         
-#Funcion que recibe una pila de tema, pila de encuestados, el mayor y menor encuestado segun opinion y experticia, promeido de experticia de los encuestados y promedio de  opinion de los encuestados
-# Retorna un archivo txt con toda la informacion de los parametros de entrada
-def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados):
+#Funcion que recibe una pila de tema e imprime el promedio de temas, preguntas y los ids de los encuestados de cada pregunta
+def mostra_temas(pila_temas):
     
-    global contador_archivos  
+    print("Resultados de la encuesta")
     
-    archivo_nombre = f"salida_prueba_{contador_archivos}.txt"
-
-    contador_archivos += 1
-    
-    with open(archivo_nombre, "w", encoding="utf-8") as archivo:
-       
-        def escribir_en_archivo(*args, **kwargs):
-            print(*args, **kwargs, file=archivo)
-    
-        escribir_en_archivo("Resultados de la encuesta")
+    for i in range(pila_temas.top + 1):
         
-        for i in range(pila_temas.top + 1):
-            
-            tema = accederPosicion(pila_temas, i)
-            escribir_en_archivo(f"[{tema.promedio_opinion}] {tema.nombre}:")
-            
-            for j in range(tema.preguntas.top + 1):
-                
-                pregunta = accederPosicion(tema.preguntas, j)
-                encuestados_ids = Pila(pregunta.encuestados.size)
-                
-                for k in range(pregunta.encuestados.top + 1):
-                    encuestado_id = accederPosicion(pregunta.encuestados, k).id
-                    encuestados_ids.push(str(encuestado_id))
-                
-                p = ""
-                
-                for k in range(encuestados_ids.top + 1):
-                    if p:
-                        p += ", " 
-                    p += accederPosicion(encuestados_ids, k)
-                
-                escribir_en_archivo(f"[{pregunta.promedio_opinion}] {pregunta.nombre} ({p})") 
-            escribir_en_archivo("")
-            
-        escribir_en_archivo("Lista de encuestados:")
-        for i in range(pila_encuestados.top+1):
-            escribir_en_archivo(f"({accederPosicion(pila_encuestados,i).id}, Nombre:'{accederPosicion(pila_encuestados,i).nombre}', Experticia:{accederPosicion(pila_encuestados,i).experticia}, Opinion:{accederPosicion(pila_encuestados,i).opinion})")
+        tema = accederPosicion(pila_temas, i)
+        print(f"[{tema.promedio_opinion}] {tema.nombre}:")
         
-        escribir_en_archivo("\n")
-        escribir_en_archivo("Resultados:")
-        escribir_en_archivo(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
-        escribir_en_archivo(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
-        escribir_en_archivo(f"Pregunta con mayor promedio de experticia: [{accederPosicion(m_n_e, 0).promedio_experticia}] {accederPosicion(m_n_e, 0).nombre}")
-        escribir_en_archivo(f"Pregunta con menor promedio de experticia: [{accederPosicion(m_n_e, 1).promedio_experticia}] {accederPosicion(m_n_e, 1).nombre}")
-        escribir_en_archivo(f"Encuestado con mayor opinion: ({accederPosicion(m_n_e_o, 0).id}, Nombre: ' {accederPosicion(m_n_e_o, 0).nombre} ', Experticia: {accederPosicion(m_n_e_o, 0).experticia}, Opinion: {accederPosicion(m_n_e_o, 0).opinion})")
-        escribir_en_archivo(f"Encuestado con menor opinion: ({accederPosicion(m_n_e_o, 1).id}, Nombre: '{accederPosicion(m_n_e_o, 1).nombre}', Experticia:  {accederPosicion(m_n_e_o, 1).experticia}, Opinion: {accederPosicion(m_n_e_o, 1).opinion})")
-        escribir_en_archivo(f"Encuestado con mayor experticia: ({accederPosicion(m_n_e_e, 0).id}, Nombre: ' {accederPosicion(m_n_e_e, 0).nombre} ', Experticia: {accederPosicion(m_n_e_e, 0).experticia}, Opinion: {accederPosicion(m_n_e_e, 0).opinion})")
-        escribir_en_archivo(f"Encuestado con menor experticia: ({accederPosicion(m_n_e_e, 1).id}, Nombre: '{accederPosicion(m_n_e_e, 1).nombre}', Experticia:  {accederPosicion(m_n_e_e, 1).experticia}, Opinion: {accederPosicion(m_n_e_e, 1).opinion})")
-        escribir_en_archivo(f"Promedio de experticia de los encuestados: {prom_experticia_encuestados}")
-        escribir_en_archivo(f"Promedio de opinion de los encuestados: {prom_opinion_encuestados}")
+        for j in range(tema.preguntas.top + 1):
+            
+            pregunta = accederPosicion(tema.preguntas, j)
+            encuestados_ids = Pila(pregunta.encuestados.size)
+            
+            for k in range(pregunta.encuestados.top + 1):
+                encuestado_id = accederPosicion(pregunta.encuestados, k).id
+                encuestados_ids.push(str(encuestado_id))
+            
+            p = ""
+            
+            for k in range(encuestados_ids.top + 1):
+                if p:
+                    p += ", " 
+                p += accederPosicion(encuestados_ids, k)
+            
+            print(f"[{pregunta.promedio_opinion}] {pregunta.nombre} ({p})") 
+        print("")
     
             
       
-contador_archivos = 1
+
 def obtener_resultado(nombre):
     resultado=obtener_pilas(nombre) 
     pila_encuestados = accederPosicion(resultado,0)
@@ -314,22 +285,45 @@ def obtener_resultado(nombre):
     
     prom_opinion_encuestados = promedio_encuestados(pila_encuestados,'opinion')
     prom_experticia_encuestados = promedio_encuestados(pila_encuestados,'experticia')
+    
 
+    
     ordenar_encuestados_preg(pila_temas)
     ordenar_preguntas_prom(pila_temas)
     QUICKSORT(pila_temas,0,pila_temas.top)
     Encuestado.criterio = 'experticia'
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
-    mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados)
     
+    mostra_temas(pila_temas)
+    
+    print("Lista de encuestados:")
+    for i in range(pila_encuestados.top+1):
+        print(accederPosicion(pila_encuestados,i))
+    
+    print("\n")
+    
+    print("Resultados:")
+
+    print(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
+    print(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
+    print(f"Pregunta con mayor promedio de experticia: [{accederPosicion(m_n_e, 0).promedio_experticia}] {accederPosicion(m_n_e, 0).nombre}")
+    print(f"Pregunta con menor promedio de experticia: [{accederPosicion(m_n_e, 1).promedio_experticia}] {accederPosicion(m_n_e, 1).nombre}")
+    print(f"Encuestado con mayor opinion: ({accederPosicion(m_n_e_o, 0).id}, Nombre: ' {accederPosicion(m_n_e_o, 0).nombre} ', Experticia: {accederPosicion(m_n_e_o, 0).experticia}, Opinion: {accederPosicion(m_n_e_o, 0).opinion})")
+    print(f"Encuestado con menor opinion: ({accederPosicion(m_n_e_o, 1).id}, Nombre: '{accederPosicion(m_n_e_o, 1).nombre}', Experticia:  {accederPosicion(m_n_e_o, 1).experticia}, Opinion: {accederPosicion(m_n_e_o, 1).opinion})")
+    print(f"Encuestado con mayor experticia: ({accederPosicion(m_n_e_e, 0).id}, Nombre: ' {accederPosicion(m_n_e_e, 0).nombre} ', Experticia: {accederPosicion(m_n_e_e, 0).experticia}, Opinion: {accederPosicion(m_n_e_e, 0).opinion})")
+    print(f"Encuestado con menor experticia: ({accederPosicion(m_n_e_e, 1).id}, Nombre: '{accederPosicion(m_n_e_e, 1).nombre}', Experticia:  {accederPosicion(m_n_e_e, 1).experticia}, Opinion: {accederPosicion(m_n_e_e, 1).opinion})")
+    print(f"Promedio de experticia de los encuestados: {prom_experticia_encuestados}")
+    print(f"Promedio de opinion de los encuestados: {prom_opinion_encuestados}")
     
     
 
  
-obtener_resultado('entrada_prueba_1.txt')  
+obtener_resultado('entrada_prueba_1.txt')
+print("\n")
+print("segundo archivo")
+print("\n")   
 obtener_resultado('entrada_prueba_2.txt')
-obtener_resultado('entrada_prueba_3.txt') 
- 
+
 
 
 
