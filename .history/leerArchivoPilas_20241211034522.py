@@ -105,15 +105,15 @@ def promedio(preguntas,tipo):
             accederPosicion(preguntas,pregunta).promedio_experticia = acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1)
             
         acum=0
-        #print("prom opinion")
-        #print(accederPosicion(preguntas,pregunta).promedio_opinion)
-        #print("prom experticia")
-        #print(accederPosicion(preguntas,pregunta).promedio_experticia)
+        print("prom opinion")
+        print(accederPosicion(preguntas,pregunta).promedio_opinion)
+        print("prom experticia")
+        print(accederPosicion(preguntas,pregunta).promedio_experticia)
         
            
 #Funcion que calcula el promedio segun el tipo (experticia u opinion) de  una pila de temas
 def calcular_promedio(temas, tipo): 
-    #print("llamndo a promedio")
+    print("llamndo a promedio")
     for i in range(temas.top+1):
        
         promedio((accederPosicion(temas,i)).preguntas, tipo)
@@ -130,28 +130,28 @@ def calcular_prom_temas(temas,tipo):
             accederPosicion(temas,i).promedio_opinion=acum/((accederPosicion(temas,i).preguntas.top)+1)
         else:
             accederPosicion(temas,i).promedio_experticia=acum/((accederPosicion(temas,i).preguntas.top)+1)
-    """ if tipo == 'opinion':        
+    if tipo == 'opinion':        
         print(accederPosicion(temas,i).promedio_opinion)
     else:
-        print(accederPosicion(temas,i).promedio_experticia) """
+        print(accederPosicion(temas,i).promedio_experticia)
 
 
 
 #funcion que recibe una pila de tema y organiza las preguntas de cada tema
 def ordenar_preguntas_prom(temas):
     
-    #print("esto es ordenar preguntas:")
+    print("esto es ordenar preguntas:")
     for i in range(temas.top+1):
         QUICKSORT(accederPosicion(temas,i).preguntas,0,accederPosicion(temas,i).preguntas.top)
-        #print(accederPosicion(temas,i).preguntas)
+        print(accederPosicion(temas,i).preguntas)
 
 #funcion que recibe una pila de tema y organiza los encuestados de las preguntas de cada tema
 def ordenar_encuestados_preg(tema):
-    #print("ESTO ES ORDENAR ENCUESTADOS")
+    print("ESTO ES ORDENAR ENCUESTADOS")
     for i in range(tema.top+1):
         for j in range ( (accederPosicion(tema,i).preguntas.top)+1):
             QUICKSORT(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados, 0, accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.top)
-            #print(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados)
+            print(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados)
  
 
         
@@ -204,23 +204,8 @@ def mayor_menor_encuestados(encuestados,tipo):
     return p
     
 
-#Funcion que recibe una pila de encuestados y retorna el promedio segun el tipo
-def promedio_encuestados(encuestados,tipo):
-    prom = 0
-    acum = 0
-    for i in range(encuestados.top+1):
-        if tipo == 'opinion':
-            acum+=accederPosicion(encuestados,i).opinion
-        else:
-            acum+=accederPosicion(encuestados,i).experticia
-        prom = acum/encuestados.size
-    return prom
-
-        
+    
             
-        
-        
-        
             
       
 
@@ -241,9 +226,15 @@ def obtener_resultado(nombre):
     m_n_e_o=mayor_menor_encuestados(pila_encuestados,'opinion')
     m_n_e_e=mayor_menor_encuestados(pila_encuestados,'experticia')
     
-    prom_opinion_encuestados = promedio_encuestados(pila_encuestados,'opinion')
-    prom_experticia_encuestados = promedio_encuestados(pila_encuestados,'experticia')
     
+    print(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
+    print(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
+    print(f"Pregunta con mayor promedio de experticia: [{accederPosicion(m_n_e, 0).promedio_experticia}] {accederPosicion(m_n_e, 0).nombre}")
+    print(f"Pregunta con menor promedio de experticia: [{accederPosicion(m_n_e, 1).promedio_experticia}] {accederPosicion(m_n_e, 1).nombre}")
+    print(f"Encuestado con mayor opinion: [{accederPosicion(m_n_e_o, 0).promedio_opinion}] {accederPosicion(m_n_e_o, 0).nombre}")
+    print(f"Encuestado con menor opinion: [{accederPosicion(m_n_e_o, 1).promedio_opinion}] {accederPosicion(m_n_e_o, 1).nombre}")
+    print(f"Encuestado con mayor experticia: [{accederPosicion(m_n_e_e, 0).promedio_experticia}] {accederPosicion(m_n_e_e, 0).nombre}")
+    print(f"Encuestado con menor experticia: [{accederPosicion(m_n_e_e, 1).promedio_experticia}] {accederPosicion(m_n_e_e, 1).nombre}")
 
     
     ordenar_encuestados_preg(pila_temas)
@@ -251,34 +242,21 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_temas,0,pila_temas.top)
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
     
-    print("Encuestados:")
+    
     for i in range(pila_encuestados.top+1):
         print(accederPosicion(pila_encuestados,i))
-    
-    print("Temas:")
     for i in range(pila_temas.top+1):
         print(accederPosicion(pila_temas,i).nombre)
         for j in range (accederPosicion(pila_temas,i).preguntas.top+1):
             print(accederPosicion(accederPosicion(pila_temas,i).preguntas,j))
     
     
-    
-    print(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
-    print(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
-    print(f"Pregunta con mayor promedio de experticia: [{accederPosicion(m_n_e, 0).promedio_experticia}] {accederPosicion(m_n_e, 0).nombre}")
-    print(f"Pregunta con menor promedio de experticia: [{accederPosicion(m_n_e, 1).promedio_experticia}] {accederPosicion(m_n_e, 1).nombre}")
-    print(f"Encuestado con mayor opinion: ({accederPosicion(m_n_e_o, 0).id}, Nombre: ' {accederPosicion(m_n_e_o, 0).nombre} ', Experticia: {accederPosicion(m_n_e_o, 0).experticia}, Opinion: {accederPosicion(m_n_e_o, 0).opinion})")
-    print(f"Encuestado con menor opinion: ({accederPosicion(m_n_e_o, 1).id}, Nombre: '{accederPosicion(m_n_e_o, 1).nombre}', Experticia:  {accederPosicion(m_n_e_o, 1).experticia}, Opinion: {accederPosicion(m_n_e_o, 1).opinion})")
-    print(f"Encuestado con mayor experticia: ({accederPosicion(m_n_e_o, 0).id}, Nombre: ' {accederPosicion(m_n_e_e, 0).nombre} ', Experticia: {accederPosicion(m_n_e_e, 0).experticia}, Opinion: {accederPosicion(m_n_e_e, 0).opinion})")
-    print(f"Encuestado con menor experticia: ({accederPosicion(m_n_e_e, 1).id}, Nombre: '{accederPosicion(m_n_e_e, 1).nombre}', Experticia:  {accederPosicion(m_n_e_e, 1).experticia}, Opinion: {accederPosicion(m_n_e_e, 1).opinion})")
-    print(f"Promedio de experticia de los encuestados: {prom_experticia_encuestados}")
-    print(f"Promedio de opinion de los encuestados: {prom_opinion_encuestados}")
-    
-    
 
  
 
+        
     
+
 obtener_resultado('entrada_prueba_2.txt')
 
 

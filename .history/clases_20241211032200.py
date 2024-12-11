@@ -1,5 +1,3 @@
-from algoritmos import *
-
 class Encuestado:
     def __init__(self, id, nombre, experticia, opinion):
         self.id = id
@@ -56,18 +54,15 @@ class Tema:
         self.promedio_opinion = 0
         self.promedio_experticia = 0
 
+    """ def promedio_opinion(self):
+        return sum([pregunta.promedio_opinion() for pregunta in self.preguntas]) / len(self.preguntas) if self.preguntas else 0
+
+    def promedio_experticia(self):
+        return sum([pregunta.promedio_experticia() for pregunta in self.preguntas]) / len(self.preguntas) if self.preguntas else 0 """
     
     def __lt__(self, other):
         if self.promedio_opinion != other.promedio_opinion:
             return self.promedio_opinion > other.promedio_opinion
         if self.promedio_experticia != other.promedio_experticia:
             return self.promedio_experticia > other.promedio_experticia
-        total_encuestados_self = 0
-        for i in range(self.preguntas.top+1):
-           total_encuestados_self += accederPosicion(self.preguntas,i).encuestados.size
-        
-        total_encuestados_other = 0
-        for i in range(other.preguntas.top+1):
-           total_encuestados_other += accederPosicion(other.preguntas,i).encuestados.size
-            
-        return total_encuestados_self > total_encuestados_other
+        return sum( self.preguntas.encuestados.size for pregunta in self.preguntas) > sum( self.preguntas.encuestados.size for pregunta in other.preguntas)

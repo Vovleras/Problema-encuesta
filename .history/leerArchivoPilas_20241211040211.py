@@ -261,8 +261,6 @@ def obtener_resultado(nombre):
         for j in range (accederPosicion(pila_temas,i).preguntas.top+1):
             print(accederPosicion(accederPosicion(pila_temas,i).preguntas,j))
     
-    
-    
     print(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
     print(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
     print(f"Pregunta con mayor promedio de experticia: [{accederPosicion(m_n_e, 0).promedio_experticia}] {accederPosicion(m_n_e, 0).nombre}")

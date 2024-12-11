@@ -105,15 +105,15 @@ def promedio(preguntas,tipo):
             accederPosicion(preguntas,pregunta).promedio_experticia = acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1)
             
         acum=0
-        #print("prom opinion")
-        #print(accederPosicion(preguntas,pregunta).promedio_opinion)
-        #print("prom experticia")
-        #print(accederPosicion(preguntas,pregunta).promedio_experticia)
+        print("prom opinion")
+        print(accederPosicion(preguntas,pregunta).promedio_opinion)
+        print("prom experticia")
+        print(accederPosicion(preguntas,pregunta).promedio_experticia)
         
            
 #Funcion que calcula el promedio segun el tipo (experticia u opinion) de  una pila de temas
 def calcular_promedio(temas, tipo): 
-    #print("llamndo a promedio")
+    print("llamndo a promedio")
     for i in range(temas.top+1):
        
         promedio((accederPosicion(temas,i)).preguntas, tipo)
@@ -130,28 +130,28 @@ def calcular_prom_temas(temas,tipo):
             accederPosicion(temas,i).promedio_opinion=acum/((accederPosicion(temas,i).preguntas.top)+1)
         else:
             accederPosicion(temas,i).promedio_experticia=acum/((accederPosicion(temas,i).preguntas.top)+1)
-    """ if tipo == 'opinion':        
+    if tipo == 'opinion':        
         print(accederPosicion(temas,i).promedio_opinion)
     else:
-        print(accederPosicion(temas,i).promedio_experticia) """
+        print(accederPosicion(temas,i).promedio_experticia)
 
 
 
 #funcion que recibe una pila de tema y organiza las preguntas de cada tema
 def ordenar_preguntas_prom(temas):
     
-    #print("esto es ordenar preguntas:")
+    print("esto es ordenar preguntas:")
     for i in range(temas.top+1):
         QUICKSORT(accederPosicion(temas,i).preguntas,0,accederPosicion(temas,i).preguntas.top)
-        #print(accederPosicion(temas,i).preguntas)
+        print(accederPosicion(temas,i).preguntas)
 
 #funcion que recibe una pila de tema y organiza los encuestados de las preguntas de cada tema
 def ordenar_encuestados_preg(tema):
-    #print("ESTO ES ORDENAR ENCUESTADOS")
+    print("ESTO ES ORDENAR ENCUESTADOS")
     for i in range(tema.top+1):
         for j in range ( (accederPosicion(tema,i).preguntas.top)+1):
             QUICKSORT(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados, 0, accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.top)
-            #print(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados)
+            print(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados)
  
 
         
@@ -244,24 +244,6 @@ def obtener_resultado(nombre):
     prom_opinion_encuestados = promedio_encuestados(pila_encuestados,'opinion')
     prom_experticia_encuestados = promedio_encuestados(pila_encuestados,'experticia')
     
-
-    
-    ordenar_encuestados_preg(pila_temas)
-    ordenar_preguntas_prom(pila_temas)
-    QUICKSORT(pila_temas,0,pila_temas.top)
-    QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
-    
-    print("Encuestados:")
-    for i in range(pila_encuestados.top+1):
-        print(accederPosicion(pila_encuestados,i))
-    
-    print("Temas:")
-    for i in range(pila_temas.top+1):
-        print(accederPosicion(pila_temas,i).nombre)
-        for j in range (accederPosicion(pila_temas,i).preguntas.top+1):
-            print(accederPosicion(accederPosicion(pila_temas,i).preguntas,j))
-    
-    
     
     print(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
     print(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
@@ -274,11 +256,26 @@ def obtener_resultado(nombre):
     print(f"Promedio de experticia de los encuestados: {prom_experticia_encuestados}")
     print(f"Promedio de opinion de los encuestados: {prom_opinion_encuestados}")
     
+    ordenar_encuestados_preg(pila_temas)
+    ordenar_preguntas_prom(pila_temas)
+    QUICKSORT(pila_temas,0,pila_temas.top)
+    QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
+    
+    
+    for i in range(pila_encuestados.top+1):
+        print(accederPosicion(pila_encuestados,i))
+    for i in range(pila_temas.top+1):
+        print(accederPosicion(pila_temas,i).nombre)
+        for j in range (accederPosicion(pila_temas,i).preguntas.top+1):
+            print(accederPosicion(accederPosicion(pila_temas,i).preguntas,j))
+    
     
 
  
 
+        
     
+
 obtener_resultado('entrada_prueba_2.txt')
 
 

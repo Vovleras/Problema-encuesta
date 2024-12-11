@@ -58,10 +58,12 @@ class Tema:
 
     
     def __lt__(self, other):
-        if self.promedio_opinion != other.promedio_opinion:
-            return self.promedio_opinion > other.promedio_opinion
         if self.promedio_experticia != other.promedio_experticia:
             return self.promedio_experticia > other.promedio_experticia
+        if self.promedio_opinion != other.promedio_opinion:
+            return self.promedio_opinion > other.promedio_opinion
+        
+        
         total_encuestados_self = 0
         for i in range(self.preguntas.top+1):
            total_encuestados_self += accederPosicion(self.preguntas,i).encuestados.size

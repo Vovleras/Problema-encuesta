@@ -62,6 +62,7 @@ class Tema:
             return self.promedio_opinion > other.promedio_opinion
         if self.promedio_experticia != other.promedio_experticia:
             return self.promedio_experticia > other.promedio_experticia
+        
         total_encuestados_self = 0
         for i in range(self.preguntas.top+1):
            total_encuestados_self += accederPosicion(self.preguntas,i).encuestados.size
