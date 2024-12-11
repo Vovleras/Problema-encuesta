@@ -16,6 +16,9 @@ class Lista:
             raise IndexError("Índice fuera de rango")
         return self.lista[indice]
     
+    def tamaño(self):
+        return len(self.lista)
+    
     def is_empty(self):
         return self.size == 0
     
@@ -63,12 +66,12 @@ for e in encuestados:
     mi_lista.agregar(e)
 
 # Mostrar antes de ordenar
-print(f"Lista antes de ordenar: {mi_lista.retornar()}" )
+#print(f"Lista antes de ordenar: {mi_lista.retornar()}" )
 
 # Ordenar
 mi_lista.ordenar_insertion_sort()
 
 # Mostrar después de ordenar
-print(f"Lista despues de ordenar: {mi_lista.retornar()}")
+#print(f"Lista despues de ordenar: {mi_lista.retornar()}")
 
 #print("Prueba elemento 0:",mi_lista.obtener(0))

@@ -2,48 +2,45 @@ import re
 from clases import *
 from listas import *
 
+"""
+Función que ordena los encuestados 
+de acuerdo a la experticia
+"""
 def enc_orden_experticia(encuestados):
+
     lista_encuestados = Lista()
     for e in encuestados:
         lista_encuestados.agregar(e)
 
-    #Modificar metodo de ordenamiento
+    #Modificar metodo de ordenamiento, para ordenar por experticia
     Encuestado.set_lt_method(lambda self, other: self.experticia > other.experticia)
 
-    # Ordenar
     lista_encuestados.ordenar_insertion_sort()
-    encuestados_ordenados = lista_encuestados.retornar()
-    return encuestados_ordenados
+    return lista_encuestados
 
+"""
+Función que obtiene las preguntas con mayor y menor promedio de opinion y experticia
+"""
 def resultados_preguntas(temas):
     total_preguntas = []
-
     for t in temas:
         for p in t.preguntas:
             total_preguntas.append(p)
 
-    print(total_preguntas)
-    # Crear la cola y cargar las preguntas
     lista_preguntas = Lista()
     for e in total_preguntas:
         lista_preguntas.agregar(e)
 
-    # Ordenar
     lista_preguntas.ordenar_insertion_sort()
-    preg_ordenadas = lista_preguntas.retornar() #Aqui estan las preguntas ordenadas en el tema
+    preg_mayor = lista_preguntas.obtener(0)
+    preg_menor = lista_preguntas.obtener(lista_preguntas.tamaño() - 1)
 
-    print(preg_ordenadas)
-    preg_mayor = preg_ordenadas[0]
-    preg_menor = preg_ordenadas[len(preg_ordenadas)-1]
-
-    #Modificar metodo de ordenamiento
+    #Modificar metodo de ordenamiento para ordenar por experticia
     Pregunta.set_lt_method(lambda self, other: self.promedio_experticia() > other.promedio_experticia())
-    # Ordenar
+    
     lista_preguntas.ordenar_insertion_sort()
-    preg_ordenadas_exp = lista_preguntas.retornar()
-    print(preg_ordenadas_exp)
-    preg_mayor_exp = preg_ordenadas_exp[0]
-    preg_menor_exp = preg_ordenadas_exp[len(preg_ordenadas)-1]
+    preg_mayor_exp = lista_preguntas.obtener(0)
+    preg_menor_exp = lista_preguntas.obtener(lista_preguntas.tamaño() - 1)
 
     return preg_mayor, preg_menor, preg_mayor_exp, preg_menor_exp
 
@@ -53,8 +50,8 @@ def escribir_resultado(listaTemas, encuestados):
     enc_menor = encuestados[len(encuestados)-1]
     #Encuestados con mayor y menor experticia
     ordenados_experticia = enc_orden_experticia(encuestados) #Encuestados ordenados por experticia
-    enc_mayor_ex = ordenados_experticia[0]
-    enc_menor_ex = ordenados_experticia[len(ordenados_experticia)-1]
+    enc_mayor_ex = ordenados_experticia.obtener(0)
+    enc_menor_ex = ordenados_experticia.obtener(ordenados_experticia.tamaño() -1)
     #Preguntas con mayor y menor promedio de opinion y experticia
     preg_mayor, preg_menor, preg_mayor_ex, preg_menor_ex = resultados_preguntas(listaTemas)
     #Promedio de opinion y experticia de los encuestados
@@ -88,103 +85,86 @@ def escribir_resultado(listaTemas, encuestados):
         archivo.write(f"Promedio de experticia de los encuestados: {prom_encuestados_ex}\n")
         archivo.write(f"Promedio del valor de opinion de los encuestados: {prom_encuestados_op}\n")
 
-def ordenarPersonas(listaDesordenada):
-    encuestados = []
-    for i in listaDesordenada:
+"""
+Función que permite crear encuestados y ordenarlos
+"""
+def ordenar_personas(lista_desordenada):
+    encuestados = Lista()
+    for i in lista_desordenada:
         datos = re.findall(r'\d+', i) #Se obtiene el id, la experticia y la opinion
-        datosNumericos = [int(num) for num in datos] #Convertir a enteros 
+        datos_numericos = [int(num) for num in datos]
         
-        id = datosNumericos[0]
+        id = datos_numericos[0]
         nombre = i.split(",")[1]
-        experticia = datosNumericos[1]
-        opinion = datosNumericos[2]
+        experticia = datos_numericos[1]
+        opinion = datos_numericos[2]
 
         personaE = Encuestado(id, nombre, experticia, opinion)
-        encuestados.append(personaE)
+        encuestados.agregar(personaE)
     
-    # Crear la cola y cargar los encuestados
-    lista_encuestados = Lista()
-    for e in encuestados:
-        lista_encuestados.agregar(e)
+    encuestados.ordenar_insertion_sort()
+    return encuestados
 
-    # Ordenar
-    lista_encuestados.ordenar_insertion_sort()
-    encuestadosOrdenados = lista_encuestados.retornar()
-    return encuestadosOrdenados
-
-def ordenarPregunta(pregunta, personas, nomPreg):
+def ordenar_pregunta(pregunta, personas, nom_preg):
     orden = pregunta.strip("{}").split(", ")
     ids = [int(num) for num in orden]
-    encuestadosDesorden = []
+    encuestados_desorden = Lista()
+
     for i in ids:
-        encuestadosDesorden.append(personas[i-1])
+        encuestados_desorden.agregar(personas.obtener(i-1))
     
-    encuestadosOrden = ordenarPersonas(encuestadosDesorden)
+    encuestados_orden = ordenar_personas(encuestados_desorden.retornar())
+    pregunta_lista = Pregunta(nom_preg, encuestados_orden.retornar()) #Aqui esta solo una pregunta
+    
+    return pregunta_lista
 
-    preguntaLista = Pregunta(nomPreg, encuestadosOrden) #Aqui esta solo una pregunta
-    return preguntaLista
-
-def ordenarTema(cadaTema, encuestados, nombre):
+def ordenar_tema(cada_tema, encuestados, nombre):
     nombre_tema = nombre
-    nombrePregunta = 1 
-    preguntasOrden = []    
-    for i in cadaTema:
-        nombre_texto = str(nombre_tema) + "." + str(nombrePregunta)
-        preguntasOrden.append(ordenarPregunta(i, encuestados, nombre_texto))
-        nombrePregunta += 1
+    nombre_pregunta = 1 
+    preguntas_orden = Lista()
 
-    # Crear la cola y cargar las preguntas
-    lista_preguntas = Lista()
-    for e in preguntasOrden:
-        lista_preguntas.agregar(e)
+    for i in cada_tema:
+        nombre_texto = str(nombre_tema) + "." + str(nombre_pregunta)
+        preguntas_orden.agregar(ordenar_pregunta(i, encuestados, nombre_texto))
+        nombre_pregunta += 1
 
-    # Ordenar
-    lista_preguntas.ordenar_insertion_sort()
-    pregOrdenadas = lista_preguntas.retornar() #Aqui estan las preguntas ordenadas en el tema
+    preguntas_orden.ordenar_insertion_sort()
 
-    temaOrdenado = Tema(nombre_tema, pregOrdenadas)
-    return temaOrdenado
+    tema_ordenado = Tema(nombre_tema, preguntas_orden.retornar())
+    return tema_ordenado
 
-def temas(info, totalEncuestados):
-    temas = []
-    for i in range(1, len(info)):
-        temas.append(ordenarTema(info[i].split("\n"), totalEncuestados, i))
-
-    # Crear la cola y cargar los temas
+def temas(info, total_encuestados):
     lista_temas = Lista()
-    for t in temas:
-        lista_temas.agregar(t)
+    for i in range(1, len(info)):
+        lista_temas.agregar(ordenar_tema(info[i].split("\n"), total_encuestados, i))
 
-    # Ordenar
     lista_temas.ordenar_insertion_sort()
-    temasOrdenados = lista_temas.retornar()
 
-    print("Temas", temasOrdenados, "Fin temas")
-    return temasOrdenados
+    print("Temas ordenados")
+    return lista_temas
 
-def asignarID(encuestadosSin):
-    listaPersonas = encuestadosSin.split("\n")
-    encuestadosDesorden = []
+def asignar_id(encuestados_sin):
+    lista_personas = encuestados_sin.split("\n")
+    encuestados_desorden = Lista()
 
-    for i in range(len(listaPersonas)):
-        encuestadosDesorden.append(str(i+1) +", "+ listaPersonas[i])
+    for i in range(len(lista_personas)):
+        encuestados_desorden.agregar(str(i+1) +", "+ lista_personas[i])
     
-    return encuestadosDesorden
+    return encuestados_desorden
 
 """"""
-def cargarArchivo(nombre):
+def cargar_archivo(nombre):
     with open(nombre, "r", errors="ignore") as archivo:
         contenido = archivo.read()
 
-    vectorInformacion = [elemento.strip() for elemento in contenido.split("\n\n")]
-    vectorInformacion.pop()
-    encuestados = asignarID(vectorInformacion[0])
-    totalEOrdenados = ordenarPersonas(encuestados)
+    vector_informacion = [elemento.strip() for elemento in contenido.split("\n\n")]
+    vector_informacion.pop()
+    encuestados = asignar_id(vector_informacion[0])
+    totalEOrdenados = ordenar_personas(encuestados.retornar())
     
-    print(totalEOrdenados)
-    k = len(vectorInformacion) - 2
-    resultado_temas = temas(vectorInformacion, encuestados)
-    escribir_resultado(resultado_temas, totalEOrdenados)
+    k = len(vector_informacion) - 2
+    resultado_temas = temas(vector_informacion, encuestados)
+    escribir_resultado(resultado_temas.retornar(), totalEOrdenados.retornar())
     
 nombreArchivo = input("Ingrese el nombre del archivo: ")
-cargarArchivo(nombreArchivo)
+cargar_archivo(nombreArchivo)
