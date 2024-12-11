@@ -229,8 +229,6 @@ def obtener_resultado(nombre):
     pila_encuestados = accederPosicion(resultado,0)
     pila_temas = accederPosicion(resultado,1)
    
-    
-
     calcular_promedio(pila_temas, 'opinion')
     calcular_promedio(pila_temas, 'experticia')
     calcular_prom_temas(pila_temas,'opinion')
@@ -251,18 +249,33 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_temas,0,pila_temas.top)
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
     
-    print("Encuestados:")
+    
+    print("Resultados de la encuesta")
+    for i in range(pila_temas.top + 1):
+        tema = accederPosicion(pila_temas, i)
+        print(f"[{tema.promedio_experticia}] {tema.nombre}:")
+        for j in range(tema.preguntas.top + 1):
+            pregunta = accederPosicion(tema.preguntas, j)
+            encuestados_str = ", ".join([
+                f"{encuestado.nombre} (Opinión: {encuestado.opinion}, Experticia: {encuestado.experticia})"
+                for encuestado in [
+                    accederPosicion(pregunta.encuestados, k)
+                    for k in range(pregunta.encuestados.top + 1)
+                ]
+            ])
+            print(f"[{pregunta.promedio_experticia}] {pregunta.nombre}: ({encuestados_str})")
+        print("")
+
+
+
+    print("Lista de encuestados:")
     for i in range(pila_encuestados.top+1):
         print(accederPosicion(pila_encuestados,i))
     
-    print("Temas:")
-    for i in range(pila_temas.top+1):
-        print(accederPosicion(pila_temas,i).nombre)
-        for j in range (accederPosicion(pila_temas,i).preguntas.top+1):
-            print(accederPosicion(accederPosicion(pila_temas,i).preguntas,j))
+    print("\n")
     
-    
-    
+    print("Resultados:")
+
     print(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
     print(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
     print(f"Pregunta con mayor promedio de experticia: [{accederPosicion(m_n_e, 0).promedio_experticia}] {accederPosicion(m_n_e, 0).nombre}")
