@@ -108,14 +108,14 @@ def promedio(preguntas,tipo):
         print(accederPosicion(preguntas,pregunta).promedio_experticia) """
         
            
-#Funcion que calcula el promedio de cada pregunta de una pila de objetos tema segun el tipo (experticia u opinion)
+#Funcion que calcula el promedio segun el tipo (experticia u opinion) de  una pila de temas
 def calcular_promedio(temas, tipo): 
     #print("llamndo a promedio")
     for i in range(temas.top+1):
        
         promedio((accederPosicion(temas,i)).preguntas, tipo)
 
-#Funcion que calcula el promedio de cada tema segun el tipo (experticia u opinion) 
+#Funcion que calcula el promedio segun el tipo (experticia u opinion) de las preguntas de una pila de objeto temas
 def calcular_prom_temas(temas,tipo):
     acum =0
     for i in range(temas.top+1):
@@ -249,8 +249,8 @@ def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, pr
         def escribir_en_archivo(*args, **kwargs):
             print(*args, **kwargs, file=archivo)
     
-        escribir_en_archivo("Resultados de la encuesta:")
-        escribir_en_archivo("")
+        escribir_en_archivo("Resultados de la encuesta")
+        
         for i in range(pila_temas.top + 1):
             
             tema = accederPosicion(pila_temas, i)
@@ -272,14 +272,14 @@ def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, pr
                         p += ", " 
                     p += accederPosicion(encuestados_ids, k)
                 
-                escribir_en_archivo(f" [{pregunta.promedio_opinion}] {pregunta.nombre} ({p})") 
+                escribir_en_archivo(f"[{pregunta.promedio_opinion}] {pregunta.nombre} ({p})") 
             escribir_en_archivo("")
             
         escribir_en_archivo("Lista de encuestados:")
         for i in range(pila_encuestados.top+1):
-            escribir_en_archivo(f" ({accederPosicion(pila_encuestados,i).id}, Nombre:'{accederPosicion(pila_encuestados,i).nombre}', Experticia:{accederPosicion(pila_encuestados,i).experticia}, Opinion:{accederPosicion(pila_encuestados,i).opinion})")
+            escribir_en_archivo(f"({accederPosicion(pila_encuestados,i).id}, Nombre:'{accederPosicion(pila_encuestados,i).nombre}', Experticia:{accederPosicion(pila_encuestados,i).experticia}, Opinion:{accederPosicion(pila_encuestados,i).opinion})")
         
-        escribir_en_archivo("")
+        escribir_en_archivo("\n")
         escribir_en_archivo("Resultados:")
         escribir_en_archivo(f"Pregunta con mayor promedio de opinion: [{accederPosicion(m_n_o, 0).promedio_opinion}] {accederPosicion(m_n_o, 0).nombre}")
         escribir_en_archivo(f"Pregunta con menor promedio de opinion: [{accederPosicion(m_n_o, 1).promedio_opinion}] {accederPosicion(m_n_o, 1).nombre}")
