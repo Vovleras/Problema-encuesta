@@ -309,7 +309,7 @@ print("\n")
 print("segundo archivo")
 
 print("\n")
-obtener_resultado('entrada_prueba_1.txt')
+obtener_resultado('datos.txt')
 
 
 

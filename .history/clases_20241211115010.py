@@ -13,12 +13,11 @@ class Encuestado:
     
     def __lt__(self, other):
         
-        if self.opinion != other.opinion:
-            return self.opinion > other.opinion
         if self.experticia != other.experticia:
             return self.experticia > other.experticia
         return self.id > other.id
-        
+        #if self.opinion != other.opinion:
+            #return self.opinion > other.opinion
   
         
     

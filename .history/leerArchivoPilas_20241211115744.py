@@ -100,15 +100,15 @@ def promedio(preguntas,tipo):
             else:
                 acum += accederPosicion(accederPosicion(preguntas,pregunta).encuestados,id).experticia 
         if tipo == 'opinion':  
-            accederPosicion(preguntas,pregunta).promedio_opinion = round( acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1) ,2)
+            accederPosicion(preguntas,pregunta).promedio_opinion = round( acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1) ,3)
         else:
-            accederPosicion(preguntas,pregunta).promedio_experticia = round( acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1) ,2)
+            accederPosicion(preguntas,pregunta).promedio_experticia = round( acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1) ,3)
             
         acum=0
-        """ print("prom opinion ",accederPosicion(preguntas,pregunta).nombre)
+        print("prom opinion ",accederPosicion(preguntas,pregunta).nombre)
         print(accederPosicion(preguntas,pregunta).promedio_opinion)
         print("prom experticia")
-        print(accederPosicion(preguntas,pregunta).promedio_experticia) """
+        print(accederPosicion(preguntas,pregunta).promedio_experticia)
         
            
 #Funcion que calcula el promedio segun el tipo (experticia u opinion) de  una pila de temas
@@ -127,9 +127,9 @@ def calcular_prom_temas(temas,tipo):
             else:
                 acum += accederPosicion(accederPosicion(temas,i).preguntas,j).promedio_experticia
         if tipo == 'opinion':
-            accederPosicion(temas,i).promedio_opinion= round( (acum/((accederPosicion(temas,i).preguntas.top)+1)) ,2)
+            accederPosicion(temas,i).promedio_opinion= round( (acum/((accederPosicion(temas,i).preguntas.top)+1)) ,3)
         else:
-            accederPosicion(temas,i).promedio_experticia= round( (acum/((accederPosicion(temas,i).preguntas.top)+1)) ,2)
+            accederPosicion(temas,i).promedio_experticia= round( (acum/((accederPosicion(temas,i).preguntas.top)+1)) ,3)
         acum = 0
     """ if tipo == 'opinion':        
         print(accederPosicion(temas,i).promedio_opinion)
@@ -220,35 +220,8 @@ def promedio_encuestados(encuestados,tipo):
         
             
         
-#Funcion que recibe una pila de tema e imprime el promedio de temas, preguntas y los ids de los encuestados de cada pregunta
-def mostra_temas(pila_temas):
-    
-    print("Resultados de la encuesta")
-    
-    for i in range(pila_temas.top + 1):
         
-        tema = accederPosicion(pila_temas, i)
-        print(f"[{tema.promedio_opinion}] {tema.nombre}:")
         
-        for j in range(tema.preguntas.top + 1):
-            
-            pregunta = accederPosicion(tema.preguntas, j)
-            encuestados_ids = Pila(pregunta.encuestados.size)
-            
-            for k in range(pregunta.encuestados.top + 1):
-                encuestado_id = accederPosicion(pregunta.encuestados, k).id
-                encuestados_ids.push(str(encuestado_id))
-            
-            p = ""
-            
-            for k in range(encuestados_ids.top + 1):
-                if p:
-                    p += ", " 
-                p += accederPosicion(encuestados_ids, k)
-            
-            print(f"[{pregunta.promedio_opinion}] {pregunta.nombre} ({p})") 
-        print("")
-    
             
       
 
@@ -277,8 +250,18 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_temas,0,pila_temas.top)
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
     
-    mostra_temas(pila_temas)
     
+    print("Resultados de la encuesta")
+    for i in range(pila_temas.top + 1):
+        tema = accederPosicion(pila_temas, i)
+        print(f"[{tema.promedio_experticia}] {tema.nombre}:")
+        for j in range(tema.preguntas.top + 1):
+            pregunta = accederPosicion(tema.preguntas, j)
+            print(f"[{pregunta.promedio_experticia}] {pregunta.nombre})")
+        print("")
+
+
+
     print("Lista de encuestados:")
     for i in range(pila_encuestados.top+1):
         print(accederPosicion(pila_encuestados,i))
@@ -304,12 +287,6 @@ def obtener_resultado(nombre):
 
     
 obtener_resultado('entrada_prueba_2.txt')
-
-print("\n")
-print("segundo archivo")
-
-print("\n")
-obtener_resultado('entrada_prueba_1.txt')
 
 
 

@@ -105,10 +105,10 @@ def promedio(preguntas,tipo):
             accederPosicion(preguntas,pregunta).promedio_experticia = round( acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1) ,2)
             
         acum=0
-        """ print("prom opinion ",accederPosicion(preguntas,pregunta).nombre)
+        print("prom opinion ",accederPosicion(preguntas,pregunta).nombre)
         print(accederPosicion(preguntas,pregunta).promedio_opinion)
         print("prom experticia")
-        print(accederPosicion(preguntas,pregunta).promedio_experticia) """
+        print(accederPosicion(preguntas,pregunta).promedio_experticia)
         
            
 #Funcion que calcula el promedio segun el tipo (experticia u opinion) de  una pila de temas
@@ -309,7 +309,7 @@ print("\n")
 print("segundo archivo")
 
 print("\n")
-obtener_resultado('entrada_prueba_1.txt')
+obtener_resultado('datos.txt')
 
 
 
