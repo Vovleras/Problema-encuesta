@@ -6,8 +6,8 @@ Resultados de la encuesta:
  [5.33] Pregunta 2.3 (40, 32, 9, 4, 26, 17)
 
 [6.56] Tema 3:
- [7.17] Pregunta 3.1 (28, 18, 5, 33, 19, 38)
- [7.0] Pregunta 3.3 (30, 6, 36)
+ [7.17] Pregunta 3.1 (28, 18, 5, 19, 33, 38)
+ [7.0] Pregunta 3.3 (6, 30, 36)
  [5.5] Pregunta 3.2 (11, 37, 21, 14)
 
 [6.33] Tema 1:
