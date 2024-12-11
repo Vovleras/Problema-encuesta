@@ -1,4 +1,4 @@
-from datosEntrada import cargarArchivo
+from datos_listas import cargar_archivo
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.ttk import Combobox
@@ -22,7 +22,7 @@ def enviar_info():
 
     # Mensaje de confirmación
     messagebox.showinfo("Procesando", f"Archivo: {nombre_archivo}\nAlgoritmo: {algoritmo}")
-    cargarArchivo(nombre_archivo)
+    cargar_archivo(nombre_archivo)
 
 # Configuración de la ventana principal
 ventana = tk.Tk()
