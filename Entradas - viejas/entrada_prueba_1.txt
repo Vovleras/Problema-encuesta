@@ -13,7 +13,7 @@ Lucas Vásquez, Experticia: 6, Opinión: 8
 
 
 {10, 2}
-{1, 9, 12, 6}
+{1, 9, 12}
 
 
 {3, 4, 5}

@@ -19,12 +19,21 @@ class Lista:
     
     def es_vacia(self):
         return len(self.lista) == 0
+    
+    def asignar(self, pos, valor):
+        if 0 <= pos < self.tamaño():
+            self.lista[pos] = valor
+        else:
+            raise IndexError("Índice fuera de rango")
+
 
     def ordenar_insertion_sort(self):
-        for j in range(1, len(self.lista)):
-            key = self.lista[j]
+        n = self.tamaño() 
+        for j in range(1, n):
+            key = self.obtener(j)
             i = j - 1
-            while i >= 0 and self.lista[i] > key:
-                self.lista[i + 1] = self.lista[i]
+            while i >= 0 and self.obtener(i) > key:
+                self.asignar(i + 1, self.obtener(i)) 
                 i -= 1
-            self.lista[i + 1] = key
+            self.asignar(i + 1, key)
+

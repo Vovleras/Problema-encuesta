@@ -75,7 +75,7 @@ class Pregunta:
             return self.promedio_opinion() > other.promedio_opinion()
         if self.promedio_experticia() != other.promedio_experticia():
             return self.promedio_experticia() > other.promedio_experticia()
-        return len(self.encuestados) > len(other.encuestados)
+        return self.encuestados.tamaño() > other.encuestados.tamaño()
 
     @classmethod
     def set_lt_method(cls, compare_fn):

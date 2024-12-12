@@ -2,6 +2,12 @@ import re
 from clases import *
 from lista import *
 
+#Funcion para prdenar encuestados por experticia y luego por id
+def orden_experticia(self, other):
+    if self.experticia != other.experticia:
+            return self.experticia > other.experticia
+    return self.id > other.id
+
 """
 Función que ordena los encuestados 
 de acuerdo a la experticia
@@ -10,7 +16,7 @@ def enc_orden_experticia(encuestados):
 
     lista_encuestados = encuestados
     #Modificar metodo de ordenamiento, para ordenar por experticia
-    Encuestado.set_lt_method(lambda self, other: self.experticia > other.experticia)
+    Encuestado.set_lt_method(orden_experticia)
 
     lista_encuestados.ordenar_insertion_sort()
     return lista_encuestados
@@ -24,11 +30,6 @@ def resultados_preguntas(temas):
         for p in range(t.preguntas.tamaño()):
             pregunta = t.preguntas.obtener(p)
             total_preguntas.agregar(pregunta)
-
-    #lista_preguntas = Lista()
-    #for e in total_preguntas:
-        
-        #lista_preguntas.agregar(e)
 
     total_preguntas.ordenar_insertion_sort()
     preg_mayor = total_preguntas.obtener(0)
@@ -66,12 +67,14 @@ def escribir_resultado(listaTemas, encuestados):
     print(enc_ordenados_op)
     enc_mayor = encuestados.obtener(0)
     enc_menor = encuestados.obtener(encuestados.tamaño()-1)
+
+    #Encuestados con mayor y menor experticia
+    ordenados_experticia = enc_orden_experticia(encuestados) #Encuestados ordenados por experticia
+    enc_mayor_ex = ordenados_experticia.obtener(0)
+    enc_menor_ex = ordenados_experticia.obtener(ordenados_experticia.tamaño() -1)
     
     #Preguntas con mayor y menor promedio de opinion y experticia
     preg_mayor, preg_menor, preg_mayor_ex, preg_menor_ex = resultados_preguntas(listaTemas)
-    
-    #prom_encuestados_op = round(sum([e.opinion for e in encuestados]) / len(encuestados), 2)
-    #prom_encuestados_ex = round(sum([e.experticia for e in encuestados]) / len(encuestados), 2)
     #Escribir en el archivo de resultados toda la infomación obtenida
     with open("resultados.txt", "w") as archivo:
         archivo.write("Resultados de la encuesta")
@@ -97,12 +100,6 @@ def escribir_resultado(listaTemas, encuestados):
         archivo.write(f"Pregunta con menor promedio de experticia: [{round(preg_menor_ex.promedio_experticia(), 2)}] {preg_menor_ex.nombre}\n")
         archivo.write(f"Encuestado con mayor opinion: {enc_mayor}\n")
         archivo.write(f"Encuestado con menor opinion: {enc_menor}\n")
-        
-        #Encuestados con mayor y menor experticia
-        ordenados_experticia = enc_orden_experticia(encuestados) #Encuestados ordenados por experticia
-        enc_mayor_ex = ordenados_experticia.obtener(0)
-        enc_menor_ex = ordenados_experticia.obtener(ordenados_experticia.tamaño() -1)
-
         archivo.write(f"Encuestado con mayor experticia: {enc_mayor_ex}\n")
         archivo.write(f"Encuestado con menor experticia: {enc_menor_ex}\n")
         archivo.write(f"Promedio de experticia de los encuestados: {prom_encuestados_ex}\n")
