@@ -175,32 +175,18 @@ def mayor_menor_pregunta(tema,tipo):
                     min = accederPosicion(accederPosicion(tema,i).preguntas,j)
                     
                 if accederPosicion(accederPosicion(tema,i).preguntas,j).promedio_opinion == min.promedio_opinion:
-                    if  accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.size > min.encuestados.size:
+                    if  accederPosicion(accederPosicion(tema,i).preguntas,j).size > min.encuestados.size:
                         min = accederPosicion(accederPosicion(tema,i).preguntas,j)
-                
+                        
                 if accederPosicion(accederPosicion(tema,i).preguntas,j).promedio_opinion == max.promedio_opinion:
-                    if  accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.size > max.encuestados.size:
+                    if  accederPosicion(accederPosicion(tema,i).preguntas,j).size > max.encuestados.size:
                         max = accederPosicion(accederPosicion(tema,i).preguntas,j)
-                        
-                        
                 
             else:
                 if max.promedio_experticia < accederPosicion(accederPosicion(tema,i).preguntas,j).promedio_experticia:
                     max = accederPosicion(accederPosicion(tema,i).preguntas,j)
-                    
                 if accederPosicion(accederPosicion(tema,i).preguntas,j).promedio_experticia < min.promedio_experticia:
                     min = accederPosicion(accederPosicion(tema,i).preguntas,j)
-                    
-                if accederPosicion(accederPosicion(tema,i).preguntas,j).promedio_experticia == min.promedio_experticia:
-                    if  accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.size > min.encuestados.size:
-                        min = accederPosicion(accederPosicion(tema,i).preguntas,j)
-                
-                if max.promedio_experticia < accederPosicion(accederPosicion(tema,i).preguntas,j).promedio_experticia:
-                    if  accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.size > max.encuestados.size:
-                        max = accederPosicion(accederPosicion(tema,i).preguntas,j)
-                    
-                
-                
                 
     p.push(max)
     p.push(min)
