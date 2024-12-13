@@ -1,4 +1,4 @@
-from datos_listas import cargar_archivo
+from datos_listas import calcular_tiempo_ejecucion
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.ttk import Combobox
@@ -14,15 +14,26 @@ def cargar_archivo():
 
 def enviar_info():
     nombre_archivo = archivo_seleccionado.get()
-    algoritmo = opcion_alg.get()
 
     if not nombre_archivo:
         messagebox.showerror("Error", "Por favor, seleccione un archivo.")
         return
 
-    # Mensaje de confirmación
-    messagebox.showinfo("Procesando", f"Archivo: {nombre_archivo}\nAlgoritmo: {algoritmo}")
-    cargar_archivo(nombre_archivo)
+    try:
+        # Procesar el archivo usando la lógica del programa
+        calcular_tiempo_ejecucion(nombre_archivo)
+
+        # Mostrar mensaje de éxito
+        messagebox.showinfo(
+            "Éxito",
+            f"Los resultados se han generado exitosamente en el archivo 'resultados.txt'."
+        )
+    except Exception as e:
+        # Mostrar mensaje de error en caso de fallo
+        messagebox.showerror(
+            "Error",
+            f"Ocurrió un error al procesar el archivo: {str(e)}"
+        )
 
 # Configuración de la ventana principal
 ventana = tk.Tk()
@@ -46,7 +57,7 @@ texto_archivo.pack(fill="x")
 archivo_seleccionado = tk.StringVar()
 campo_archivo = tk.Entry(frame_archivo, textvariable=archivo_seleccionado, width=40, state="readonly")
 campo_archivo.pack(side="left", pady=5, padx=5)
-boton_cargar = tk.Button(frame_archivo, text="Cargar Archivo", command=cargar_archivo, bg="#2196F3", fg="white")
+boton_cargar = tk.Button(frame_archivo, text="Cargar Archivo", command=seleccionar_archivo, bg="#2196F3", fg="white")
 boton_cargar.pack(side="left", pady=5, padx=5)
 
 # Selección del algoritmo
