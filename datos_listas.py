@@ -1,6 +1,24 @@
 import re
+import time
 from clases import *
 from lista import *
+
+"""
+Calcula el tiempo total de ejecución del programa, desde la carga del archivo
+hasta la escritura de los resultados en "resultados.txt".
+"""
+def calcular_tiempo_ejecucion(nombre_archivo):
+    # Capturar el tiempo de inicio
+    tiempo_inicio = time.time()
+    # Ejecutar el programa
+    cargar_archivo(nombre_archivo)
+    # Capturar el tiempo de finalización
+    tiempo_fin = time.time()
+    # Calcular el tiempo total en milisegundos
+    tiempo_total_ms = (tiempo_fin - tiempo_inicio) * 1000
+
+    with open("resultados.txt", "a") as archivo_resultados:
+        archivo_resultados.write(f"\nTiempo total de ejecución del programa: {tiempo_total_ms:.2f} milisegundos\n")
 
 #Funcion para prdenar encuestados por experticia y luego por id
 def orden_experticia(self, other):
@@ -186,5 +204,5 @@ def cargar_archivo(nombre):
     resultado_temas = temas(vector_informacion, encuestados)
     escribir_resultado(resultado_temas.retornar(), totalEOrdenados)
     
-nombreArchivo = input("Ingrese el nombre del archivo: ")
-cargar_archivo(nombreArchivo)
+# nombreArchivo = input("Ingrese el nombre del archivo: ")
+# cargar_archivo(nombreArchivo)
