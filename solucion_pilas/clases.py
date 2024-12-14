@@ -1,4 +1,4 @@
-from algoritmos import *
+from solucion_pilas.algoritmos import *
 
 class Encuestado:
     def __init__(self, id, nombre, experticia, opinion):

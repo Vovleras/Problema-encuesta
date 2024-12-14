@@ -1,5 +1,7 @@
-from clases import *
-from algoritmos import *
+from solucion_pilas.clases import *
+from solucion_pilas.algoritmos import *
+import time
+import os
 
 #Funcion que recbie el nombre de un archivo de texto y extrae la información del archivo en listas
 #Retorna una lista que en su primera posicion tiene una lista de objetos de encuestados
@@ -344,7 +346,23 @@ def obtener_resultado(nombre):
     QUICKSORT(pila_encuestados, 0, pila_encuestados.top)
     mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados)
     
-    
+
+
+"""
+Calcula el tiempo total de ejecución del programa, desde la carga del archivo
+hasta la escritura de los resultados en "resultados.txt".
+"""
+def calcular_tiempo_ejecucion(nombre_archivo):
+    tiempo_inicio = time.time()
+    obtener_resultado(nombre_archivo)
+    tiempo_fin = time.time()
+    tiempo_total_ms = (tiempo_fin - tiempo_inicio) * 1000
+
+    with open("resultados.txt", "a") as archivo_resultados:
+        archivo_resultados.write(f"\nTiempo total de ejecución del programa: {tiempo_total_ms:.2f} milisegundos\n")
+
+    ruta_archivo_salida = os.path.join(os.getcwd(), "resultados.txt")
+    return ruta_archivo_salida
     
 
  
