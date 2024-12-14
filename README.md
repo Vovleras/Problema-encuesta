@@ -32,7 +32,7 @@ La consultoría obtiene los siguientes datos además de:
 - Promedio de experticia de los encuestados
 - Promedio del valor de opinión de los encuestados
 
-# **ESTRUCTURA IMPLEMENTACIÓN**
+# **ESTRUCTURA DE IMPLEMENTACIÓN**
 
 Para llevar a cabo el ordenamiento y procesamiento de datos se implementaron dos soluciones:
 
