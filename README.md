@@ -64,7 +64,7 @@ El código se estructura en tres carpetas y un archivo `main`:
 - **El archivo main** tiene la GUI de la aplicación.
   
 **NOTA**
-  Los archivos resultados.txt son utilizados por el programa para generar los informes, los cuales luego se pueden retornar al usuario para su descarga.
+Los archivos resultados.txt son utilizados por el programa para generar los informes, los cuales luego se pueden retornar al usuario para su descarga.
 
 # **GUIA DE USUARIO**
 - La GUI implementada permite cargar un archivo desde el ordenador. Luego, se debe seleccionar con qué estructura de datos
