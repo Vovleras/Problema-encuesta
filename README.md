@@ -43,7 +43,7 @@ La estructura pilas es extendida ya que se implementó un método adicional `pee
 
 El código se estructura en tres carpetas y un archivo `main`:
 
-- **La carpeta entradas_pruebas** contiene todas las encuestas de prueba.
+- **La carpeta entradas_pruebas** contiene algunas encuestas de prueba que el usuario puede utilizar para probar el programa.
 
 - **La carpeta solucion_listas** contiene:
   - **Archivo clases_listas**:
