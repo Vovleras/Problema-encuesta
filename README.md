@@ -51,11 +51,11 @@ El código se estructura en tres carpetas y un archivo `main`:
   - **Archivo datos_listas**:
     - Se encuentra toda la lógica que procesa los datos y obtiene los resultados utilizando la estructura listas.
   - **Archivo lista**:
-    - Se encuentra la implementación de la clase lista que es la estructura de datos utilizada por Insert.
+    - Se encuentra la implementación de la clase lista que es la estructura de datos utilizada por Insert y la implementación del algoritmo Insert.
 
 - **La carpeta solucion_pilas** contiene:
   - **Archivo algoritmos**:
-    - Se encuentra la implementación de la clase pila extendida que es la estructura de datos utilizada por Quicksort.
+    - Se encuentra la implementación de la clase pila extendida que es la estructura de datos utilizada por Quicksort y la implementación del algoritmo Quicksort.
   - **Archivo clases**:
     - Se encuentra la implementación de las clases encuestados, temas y preguntas.
   - **Archivo leerArchivoPilas**:
