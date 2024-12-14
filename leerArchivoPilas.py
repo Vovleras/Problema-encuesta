@@ -261,11 +261,9 @@ def promedio_encuestados(encuestados,tipo):
 # Retorna un archivo txt con toda la informacion de los parametros de entrada
 def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, prom_experticia_encuestados, prom_opinion_encuestados):
     
-    global contador_archivos  
     
-    archivo_nombre = f"salida_prueba_{contador_archivos}.txt"
+    archivo_nombre = f"resultados.txt"
 
-    contador_archivos += 1
     
     with open(archivo_nombre, "w", encoding="utf-8") as archivo:
        
@@ -314,10 +312,13 @@ def mostra_info(pila_encuestados, pila_temas, m_n_e_e, m_n_e_o, m_n_o, m_n_e, pr
         escribir_en_archivo(f"Encuestado con menor experticia: ({accederPosicion(m_n_e_e, 1).id}, Nombre: '{accederPosicion(m_n_e_e, 1).nombre}', Experticia:  {accederPosicion(m_n_e_e, 1).experticia}, Opinion: {accederPosicion(m_n_e_e, 1).opinion})")
         escribir_en_archivo(f"Promedio de experticia de los encuestados: {prom_experticia_encuestados}")
         escribir_en_archivo(f"Promedio de opinion de los encuestados: {prom_opinion_encuestados}")
+        
+         
+         
+
     
             
-      
-contador_archivos = 1
+
 def obtener_resultado(nombre):
     resultado=obtener_pilas(nombre) 
     pila_encuestados = accederPosicion(resultado,0)
@@ -347,9 +348,9 @@ def obtener_resultado(nombre):
     
 
  
-obtener_resultado('entrada_prueba_1.txt')  
-obtener_resultado('entrada_prueba_2.txt')
-obtener_resultado('entrada_prueba_3.txt') 
+#obtener_resultado('entrada_prueba_1.txt')  
+#obtener_resultado('entrada_prueba_2.txt')
+#obtener_resultado('entrada_prueba_3.txt') 
  
 
 
