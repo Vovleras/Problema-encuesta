@@ -62,7 +62,8 @@ El código se estructura en tres carpetas y un archivo `main`:
     - Se encuentra toda la lógica que procesa los datos y obtiene los resultados utilizando la estructura pilas.
 
 - **El archivo main** tiene la GUI de la aplicación.
-**NOTA*
+  
+**NOTA**
   Los archivos resultados.txt son utilizados por el programa para generar los informes, los cuales luego se pueden retornar al usuario para su descarga.
 
 # **GUIA DE USUARIO**
