@@ -1,0 +1,45 @@
+Sofía García, Experticia: 3, Opinión: 7
+Alejandro Torres, Experticia: 8, Opinión: 6
+Valentina Rodríguez, Experticia: 6, Opinión: 9
+Juan López, Experticia: 2, Opinión: 5
+Camila Fernández, Experticia: 4, Opinión: 7
+Mateo González, Experticia: 5, Opinión: 4
+Isabella Díaz, Experticia: 7, Opinión: 8
+Lucas Vásquez, Experticia: 6, Opinión: 6
+Sebastián Pérez, Experticia: 9, Opinión: 7
+Laura Sánchez, Experticia: 8, Opinión: 8
+Antonio Díaz, Experticia: 10, Opinión: 5
+Jorge Fernández, Experticia: 9, Opinión: 7
+Carlos Pérez, Experticia: 2, Opinión: 6
+María López, Experticia: 6, Opinión: 8
+Antonio Ruiz, Experticia: 5, Opinión: 7
+Lucía García, Experticia: 7, Opinión: 9
+Paula Torres, Experticia: 4, Opinión: 6
+Javier Fernández, Experticia: 8, Opinión: 5
+Ana Ramírez, Experticia: 9, Opinión: 7
+Eduardo González, Experticia: 4, Opinión: 6
+Sara Martínez, Experticia: 7, Opinión: 8
+Pedro Sánchez, Experticia: 5, Opinión: 5
+Cristina Díaz, Experticia: 8, Opinión: 9
+Raúl Pérez, Experticia: 2, Opinión: 4
+Marta López, Experticia: 10, Opinión: 10
+Luis García, Experticia: 1, Opinión: 4
+Sofía Hernández, Experticia: 8, Opinión: 9
+Marcos Torres, Experticia: 3, Opinión: 7
+Victoria Ruiz, Experticia: 6, Opinión: 6
+Ana López, Experticia: 5, Opinión: 5
+Gabriel Fernández, Experticia: 7, Opinión: 8
+Teresa Sánchez, Experticia: 9, Opinión: 10
+
+{21 ,1 ,22 ,5 ,15}
+{30 ,12}
+{12 ,5 ,23 ,21}
+{27 ,28 ,30}
+{23 ,5}
+{29 ,22 ,27 ,24 ,21 ,2}
+
+{28 ,10 ,31 ,24 ,14}
+{4 ,12}
+{30 ,10 ,4 ,12 ,2 ,8 ,7}
+{15 ,17 ,25 ,22 ,31}
+{29 ,20 ,9}
