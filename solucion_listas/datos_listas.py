@@ -1,7 +1,7 @@
 import re
 import time
-from clases_listas import *
-from lista import *
+from solucion_listas.clases_listas import *
+from solucion_listas.lista import *
 import os
 
 #Criterio para ordenar por opinion los encuestados 
@@ -25,13 +25,9 @@ Calcula el tiempo total de ejecución del programa, desde la carga del archivo
 hasta la escritura de los resultados en "resultados.txt".
 """
 def calcular_tiempo_ejecucion(nombre_archivo):
-    # Capturar el tiempo de inicio
     tiempo_inicio = time.time()
-    # Ejecutar el programa
     cargar_archivo(nombre_archivo)
-    # Capturar el tiempo de finalización
     tiempo_fin = time.time()
-    # Calcular el tiempo total en milisegundos
     tiempo_total_ms = (tiempo_fin - tiempo_inicio) * 1000
 
     with open("resultados.txt", "a") as archivo_resultados:

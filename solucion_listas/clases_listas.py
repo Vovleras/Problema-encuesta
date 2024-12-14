@@ -1,5 +1,5 @@
 # clases.py
-from lista import Lista
+from solucion_listas.lista import Lista
 
 class Encuestado:
     def __init__(self, id, nombre, experticia, opinion):

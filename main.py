@@ -1,4 +1,4 @@
-from datos_listas import calcular_tiempo_ejecucion
+from solucion_listas.datos_listas import calcular_tiempo_ejecucion
 #from datos_pilas import funcion_entrada_quick DESCOMENTAR
 import tkinter as tk
 from tkinter import filedialog, messagebox

@@ -33,4 +33,4 @@ Encuestado con menor experticia: (1, Nombre:  SofÃ­a GarcÃ­a, Experticia: 1, Opi
 Promedio de experticia de los encuestados: 5.33
 Promedio del valor de opinion de los encuestados: 5.75
 
-Tiempo total de ejecución del programa: 0.00 milisegundos
+Tiempo total de ejecución del programa: 7.96 milisegundos
