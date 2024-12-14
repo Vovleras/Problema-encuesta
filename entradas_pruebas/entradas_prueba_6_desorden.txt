@@ -1,0 +1,32 @@
+Ana Gómez, Experticia: 17, Opinión: 6
+Luis Rodríguez, Experticia: 16, Opinión: 7
+Rafael Mendoza, Experticia: 4, Opinión: 6
+Héctor Ríos, Experticia: 2, Opinión: 9
+Juan Pérez, Experticia: 20, Opinión: 8
+Miguel Torres, Experticia: 14, Opinión: 6
+Santiago Hernández, Experticia: 8, Opinión: 9
+María López, Experticia: 19, Opinión: 7
+Patricia Ortiz, Experticia: 9, Opinión: 7
+Gloria Silva, Experticia: 3, Opinión: 7
+Carmen Ramírez, Experticia: 13, Opinión: 7
+Raúl Delgado, Experticia: 6, Opinión: 7
+Laura Ruiz, Experticia: 11, Opinión: 8
+Carlos Martínez, Experticia: 18, Opinión: 9
+Alberto Morales, Experticia: 10, Opinión: 6
+Sofía García, Experticia: 1, Opinión: 6
+Adriana Castro, Experticia: 7, Opinión: 6
+Elena Fernández, Experticia: 15, Opinión: 8
+Isabel Aguilar, Experticia: 5, Opinión: 8
+Jorge Sánchez, Experticia: 12, Opinión: 9
+
+
+{3, 8, 15}
+{1, 11, 20}
+
+
+{2, 9, 18}
+{4, 10, 16}
+
+
+{5, 12, 19}
+{6, 13, 17}

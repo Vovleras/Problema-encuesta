@@ -1,0 +1,49 @@
+Eduardo González, Experticia: 4, Opinión: 6
+Pedro Sánchez, Experticia: 5, Opinión: 5
+María López, Experticia: 6, Opinión: 8
+Ana Ramírez, Experticia: 9, Opinión: 7
+Antonio Díaz, Experticia: 10, Opinión: 5
+Sebastián Pérez, Experticia: 9, Opinión: 7
+Cristina Díaz, Experticia: 8, Opinión: 9
+Javier Fernández, Experticia: 8, Opinión: 5
+Lucas Vásquez, Experticia: 6, Opinión: 6
+Sofía Hernández, Experticia: 8, Opinión: 9
+Carlos Pérez, Experticia: 2, Opinión: 6
+Isabella Díaz, Experticia: 7, Opinión: 8
+Marta López, Experticia: 10, Opinión: 10
+Sara Martínez, Experticia: 7, Opinión: 8
+Sofía García, Experticia: 3, Opinión: 7
+Alejandro Torres, Experticia: 8, Opinión: 6
+Lucía García, Experticia: 7, Opinión: 9
+Teresa Sánchez, Experticia: 9, Opinión: 10
+Raúl Pérez, Experticia: 2, Opinión: 4
+Victoria Ruiz, Experticia: 6, Opinión: 6
+
+{4, 8}
+{17, 11, 12}
+{13, 15, 17, 12, 5}
+{20, 12, 6}
+
+
+{7, 15, 20, 18}
+{4, 10, 14, 18}
+{11, 13, 3, 19, 14, 15}
+{5, 11, 2}
+{9, 17, 5, 3, 4, 20, 18}
+{20, 14, 7, 12, 8}
+
+
+{14, 3, 17}
+{15, 9, 20, 11, 18, 19}
+{13, 15, 6, 1, 8}
+{18, 5, 15, 4}
+{3, 7, 10, 4}
+{3, 12, 6, 14}
+
+
+{3, 6}
+{10, 20, 17, 14, 19, 18, 3}
+{11, 15, 17}
+{3, 15, 19, 17}
+{17, 10, 3}
+{8, 13, 12, 18, 17, 11, 5}

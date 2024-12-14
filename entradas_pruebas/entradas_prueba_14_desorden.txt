@@ -1,0 +1,18 @@
+Laura Martínez, Experticia: 4, Opinión: 8
+Daniela Orozco, Experticia: 8, Opinión: 7
+Jorge León, Experticia: 1, Opinión: 5
+Carlos Ruiz, Experticia: 6, Opinión: 7
+Raúl Moreno, Experticia: 3, Opinión: 5
+Sofía Fernández, Experticia: 1, Opinión: 7
+Alejandro Márquez, Experticia: 9, Opinión: 8
+Patricia Díaz, Experticia: 2, Opinión: 6
+Lucía Rivera, Experticia: 7, Opinión: 8
+María Castro, Experticia: 5, Opinión: 6
+
+
+{3, 7}
+{8, 4, 10}
+
+
+{1, 6}
+{2, 9, 5}

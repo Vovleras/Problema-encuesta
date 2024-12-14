@@ -1,0 +1,21 @@
+Fernando Santos, Experticia: 9, Opinión: 8
+Isabel Cruz, Experticia: 8, Opinión: 7
+Rafael García, Experticia: 8, Opinión: 6
+Lucía Jiménez, Experticia: 7, Opinión: 9
+Carlos Pérez, Experticia: 6, Opinión: 8
+Ana López, Experticia: 5, Opinión: 7
+María Sánchez, Experticia: 4, Opinión: 6
+Pedro Rodríguez, Experticia: 3, Opinión: 9
+Jorge Gómez, Experticia: 2, Opinión: 7
+Laura Fernández, Experticia: 1, Opinión: 5
+Sofía Ramírez, Experticia: 1, Opinión: 6
+
+
+{8, 1}
+
+
+{2, 11, 9}
+{3, 7, 10}
+
+
+{4, 5, 6}
