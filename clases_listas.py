@@ -7,6 +7,7 @@ class Encuestado:
         self.nombre = nombre
         self.experticia = experticia
         self.opinion = opinion
+        self.criterio = 1
 
     def __repr__(self):
         return f"({self.id}, Nombre: {self.nombre}, Experticia: {self.experticia}, Opinion: {self.opinion})"

@@ -1,7 +1,24 @@
 import re
 import time
-from clases import *
+from clases_listas import *
 from lista import *
+import os
+
+#Criterio para ordenar por opinion los encuestados 
+def criterio_opinion_enc(self, other):
+    if self.opinion != other.opinion:
+        return self.opinion > other.opinion
+    if self.experticia != other.experticia:
+        return self.experticia > other.experticia
+    return self.id > other.id
+
+#Criterio para ordenar por promedio de opinion las preguntas
+def criterio_opinion_preg(self, other):
+    if self.promedio_opinion() != other.promedio_opinion():
+        return self.promedio_opinion() > other.promedio_opinion()
+    if self.promedio_experticia() != other.promedio_experticia():
+        return self.promedio_experticia() > other.promedio_experticia()
+    return self.encuestados.tamaño() > other.encuestados.tamaño()    
 
 """
 Calcula el tiempo total de ejecución del programa, desde la carga del archivo
@@ -19,6 +36,9 @@ def calcular_tiempo_ejecucion(nombre_archivo):
 
     with open("resultados.txt", "a") as archivo_resultados:
         archivo_resultados.write(f"\nTiempo total de ejecución del programa: {tiempo_total_ms:.2f} milisegundos\n")
+
+    ruta_archivo_salida = os.path.join(os.getcwd(), "resultados.txt")
+    return ruta_archivo_salida
 
 #Funcion para prdenar encuestados por experticia y luego por id
 def orden_experticia(self, other):
@@ -192,11 +212,16 @@ def asignar_id(encuestados_sin):
 
 """"""
 def cargar_archivo(nombre):
+    Encuestado.set_lt_method(criterio_opinion_enc)
+    Pregunta.set_lt_method(criterio_opinion_preg)
+
     with open(nombre, "r", errors="ignore") as archivo:
         contenido = archivo.read()
 
     vector_informacion = [elemento.strip() for elemento in contenido.split("\n\n")]
-    vector_informacion.pop()
+
+    if vector_informacion and not vector_informacion[-1]:
+        vector_informacion.pop()
     encuestados = asignar_id(vector_informacion[0])
     totalEOrdenados = ordenar_personas(encuestados.retornar())
     
@@ -204,5 +229,3 @@ def cargar_archivo(nombre):
     resultado_temas = temas(vector_informacion, encuestados)
     escribir_resultado(resultado_temas.retornar(), totalEOrdenados)
     
-# nombreArchivo = input("Ingrese el nombre del archivo: ")
-# cargar_archivo(nombreArchivo)
