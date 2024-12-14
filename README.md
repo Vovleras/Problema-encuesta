@@ -32,6 +32,8 @@ La consultoría obtiene los siguientes datos además de:
 - Promedio de experticia de los encuestados
 - Promedio del valor de opinión de los encuestados
 
+# **ESTRUCTURA IMPLEMENTACIÓN**
+
 Para llevar a cabo el ordenamiento y procesamiento de datos se implementaron dos soluciones:
 
 - **Primera solución**: Se ordenan los datos mediante el algoritmo de ordenamiento Insertion sort. Dicho algoritmo funciona con estructura de datos listas.
