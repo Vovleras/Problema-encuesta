@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.ttk import Combobox
 
-def cargar_archivo():
+def seleccionar_archivo():
     # Abre el cuadro de diálogo para seleccionar un archivo
     archivo = filedialog.askopenfilename(
         title="Seleccionar archivo",
