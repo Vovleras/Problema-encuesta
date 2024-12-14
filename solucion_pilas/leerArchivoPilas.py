@@ -352,16 +352,19 @@ def obtener_resultado(nombre):
 Calcula el tiempo total de ejecución del programa, desde la carga del archivo
 hasta la escritura de los resultados en "resultados.txt".
 """
-def calcular_tiempo_ejecucion(nombre_archivo):
+def calcular_tiempo_ejecucion_quick(nombre_archivo):
     tiempo_inicio = time.time()
     obtener_resultado(nombre_archivo)
     tiempo_fin = time.time()
     tiempo_total_ms = (tiempo_fin - tiempo_inicio) * 1000
 
-    with open("resultados.txt", "a") as archivo_resultados:
+    print("Se escribieron los resultados")
+
+    with open("resultados.txt", "a", encoding="utf-8") as archivo_resultados:
         archivo_resultados.write(f"\nTiempo total de ejecución del programa: {tiempo_total_ms:.2f} milisegundos\n")
 
     ruta_archivo_salida = os.path.join(os.getcwd(), "resultados.txt")
+    print(ruta_archivo_salida)
     return ruta_archivo_salida
     
 

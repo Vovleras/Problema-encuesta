@@ -10,7 +10,7 @@ def criterio_opinion_enc(self, other):
         return self.opinion > other.opinion
     if self.experticia != other.experticia:
         return self.experticia > other.experticia
-    return self.id > other.id
+    return self.id < other.id
 
 #Criterio para ordenar por promedio de opinion las preguntas
 def criterio_opinion_preg(self, other):
@@ -30,7 +30,7 @@ def calcular_tiempo_ejecucion(nombre_archivo):
     tiempo_fin = time.time()
     tiempo_total_ms = (tiempo_fin - tiempo_inicio) * 1000
 
-    with open("resultados.txt", "a") as archivo_resultados:
+    with open("resultados.txt", "a", encoding="utf-8") as archivo_resultados:
         archivo_resultados.write(f"\nTiempo total de ejecución del programa: {tiempo_total_ms:.2f} milisegundos\n")
 
     ruta_archivo_salida = os.path.join(os.getcwd(), "resultados.txt")
@@ -110,7 +110,7 @@ def escribir_resultado(listaTemas, encuestados):
     #Preguntas con mayor y menor promedio de opinion y experticia
     preg_mayor, preg_menor, preg_mayor_ex, preg_menor_ex = resultados_preguntas(listaTemas)
     #Escribir en el archivo de resultados toda la infomación obtenida
-    with open("resultados.txt", "w") as archivo:
+    with open("resultados.txt", "w", encoding="utf-8") as archivo:
         archivo.write("Resultados de la encuesta")
         for i in listaTemas:
             promedio = round(i.promedio_opinion(), 2)

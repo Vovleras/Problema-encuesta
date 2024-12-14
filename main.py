@@ -1,5 +1,5 @@
 from solucion_listas.datos_listas import calcular_tiempo_ejecucion
-#from datos_pilas import funcion_entrada_quick DESCOMENTAR
+from solucion_pilas.leerArchivoPilas import calcular_tiempo_ejecucion_quick
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.ttk import Combobox
@@ -35,7 +35,7 @@ def enviar_info():
             archivo_generado = calcular_tiempo_ejecucion(nombre_archivo)
         elif estructura_datos == "Pilas":
            # archivo_generado = funcion_entrada_quick(nombre_archivo) #DESCOMENTAR
-           archivo_generado = calcular_tiempo_ejecucion(nombre_archivo)
+           archivo_generado = calcular_tiempo_ejecucion_quick(nombre_archivo)
         else:
             messagebox.showerror("Error", "Estructura de datos no válida.")
             return
@@ -64,7 +64,7 @@ def descargar_resultados():
 
     try:
         # Abrir el archivo generado para leer su contenido
-        with open(archivo_generado, "r") as archivo:
+        with open(archivo_generado, "r", encoding="utf-8") as archivo:
             contenido = archivo.read()
 
         # Abrir el cuadro de diálogo para guardar el archivo
