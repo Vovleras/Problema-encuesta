@@ -52,6 +52,5 @@ Francisco Ortega, Experticia: 9, Opinión: 9
 {3, 13, 20, 33, 36}
 
 
-
 {7, 15, 23, 31, 38}
 {9, 16, 24, 26, 17}

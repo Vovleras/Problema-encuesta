@@ -1,0 +1,47 @@
+Guillermo Castro, Experticia: 1, Opinión: 5
+Javier Silva, Experticia: 1, Opinión: 5
+Marcela Díaz, Experticia: 1, Opinión: 6
+Andrea Delgado, Experticia: 1, Opinión: 6
+Luis Medina, Experticia: 1, Opinión: 7
+Enrique Acosta, Experticia: 1, Opinión: 7
+Cecilia Ortiz, Experticia: 1, Opinión: 8
+Patricia Ortega, Experticia: 2, Opinión: 5
+Vanessa Vargas, Experticia: 2, Opinión: 5
+Carlos Peña, Experticia: 2, Opinión: 6
+Alejandro Mendoza, Experticia: 2, Opinión: 7
+Mónica Rojas, Experticia: 2, Opinión: 8
+Sergio López, Experticia: 3, Opinión: 5
+Gabriela Cruz, Experticia: 3, Opinión: 6
+Raúl Ruiz, Experticia: 3, Opinión: 6
+Natalia Hernández, Experticia: 3, Opinión: 7
+Lucía Morales, Experticia: 4, Opinión: 5
+David Vargas, Experticia: 4, Opinión: 7
+Francisco Reyes, Experticia: 4, Opinión: 8
+Sofía Castro, Experticia: 5, Opinión: 6
+Ricardo Ramírez, Experticia: 5, Opinión: 7
+Jorge Sánchez, Experticia: 6, Opinión: 5
+Elena Torres, Experticia: 6, Opinión: 9
+Pedro Fernández, Experticia: 7, Opinión: 4
+Isabel Martínez, Experticia: 7, Opinión: 8
+María Gómez, Experticia: 8, Opinión: 5
+Juan Pérez, Experticia: 8, Opinión: 6
+Ana Rodríguez, Experticia: 9, Opinión: 7
+Diego Morales, Experticia: 9, Opinión: 8
+Laura Jiménez, Experticia: 10, Opinión: 6
+
+
+{1, 2, 3}
+
+
+{4, 5, 6}
+{7, 8, 9, 10}
+{11, 12, 13}
+
+
+{14, 15, 16}
+{17, 18, 19, 20}
+{21, 22, 23, 24}
+
+
+{25, 26, 27}
+{28, 29, 30}
