@@ -104,15 +104,12 @@ def promedio(preguntas,tipo):
             accederPosicion(preguntas,pregunta).promedio_experticia = round( acum/((accederPosicion(preguntas,pregunta).encuestados.top)+1) ,2)
             
         acum=0
-        """ print("prom opinion ",accederPosicion(preguntas,pregunta).nombre)
-        print(accederPosicion(preguntas,pregunta).promedio_opinion)
-        print("prom experticia")
-        print(accederPosicion(preguntas,pregunta).promedio_experticia) """
+    
         
            
 #Funcion que calcula el promedio de cada pregunta de una pila de objetos tema segun el tipo (experticia u opinion)
 def calcular_promedio(temas, tipo): 
-    #print("llamndo a promedio")
+   
     for i in range(temas.top+1):
        
         promedio((accederPosicion(temas,i)).preguntas, tipo)
@@ -131,31 +128,27 @@ def calcular_prom_temas(temas,tipo):
         else:
             accederPosicion(temas,i).promedio_experticia= round( (acum/((accederPosicion(temas,i).preguntas.top)+1)) ,2)
         acum = 0
-    """ if tipo == 'opinion':        
-        print(accederPosicion(temas,i).promedio_opinion)
-    else:
-        print(accederPosicion(temas,i).promedio_experticia) """
+
 
 
 
 #funcion que recibe una pila de tema y organiza las preguntas de cada tema
 def ordenar_preguntas_prom(temas):
     
-    #print("esto es ordenar preguntas:")
+    
     for i in range(temas.top+1):
         QUICKSORT(accederPosicion(temas,i).preguntas,0,accederPosicion(temas,i).preguntas.top)
-        #print(accederPosicion(temas,i).preguntas)
+        
 
 #funcion que recibe una pila de tema y organiza los encuestados de las preguntas de cada tema
 def ordenar_encuestados_preg(tema):
     Encuestado.criterio = "opinion"
-    #print("ESTO ES ORDENAR ENCUESTADOS")
+   
     for i in range(tema.top+1):
         for j in range ( (accederPosicion(tema,i).preguntas.top)+1):
             
             QUICKSORT(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados, 0, accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados.top)
-            #print(accederPosicion(accederPosicion(tema,i).preguntas,j).encuestados)
- 
+           
 
         
         
