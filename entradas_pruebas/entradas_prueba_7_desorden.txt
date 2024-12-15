@@ -1,56 +1,18 @@
-Lucía Ramírez, Experticia: 14, Opinión: 7
-Gabriela Vega, Experticia: 20, Opinión: 7
-Ana Gómez, Experticia: 37, Opinión: 6
-Carlos Martínez, Experticia: 38, Opinión: 9
-Pablo Gómez, Experticia: 15, Opinión: 8
-Raúl Delgado, Experticia: 26, Opinión: 7
-Sofía García, Experticia: 21, Opinión: 6
-Natalia Torres, Experticia: 12, Opinión: 8
-David Paredes, Experticia: 3, Opinión: 9
-Laura Ruiz, Experticia: 31, Opinión: 8
-Andrés Morales, Experticia: 17, Opinión: 7
-Luis Rodríguez, Experticia: 36, Opinión: 7
-Isabel Aguilar, Experticia: 25, Opinión: 8
-Ricardo Medina, Experticia: 11, Opinión: 7
-Juan Pérez, Experticia: 40, Opinión: 8
-Jorge Sánchez, Experticia: 32, Opinión: 9
-Patricia Ortiz, Experticia: 29, Opinión: 7
-María López, Experticia: 39, Opinión: 7
-Miguel Torres, Experticia: 34, Opinión: 6
-Alejandra Vargas, Experticia: 10, Opinión: 6
-Mónica Herrera, Experticia: 16, Opinión: 9
-Daniela Rojas, Experticia: 8, Opinión: 7
-Martín Reyes, Experticia: 5, Opinión: 7
-Santiago Hernández, Experticia: 28, Opinión: 9
-Esteban Peña, Experticia: 13, Opinión: 6
-Adriana Castro, Experticia: 27, Opinión: 6
-Felipe Cruz, Experticia: 1, Opinión: 6
-Fernando Jiménez, Experticia: 19, Opinión: 8
-Manuel Castillo, Experticia: 7, Opinión: 8
-Elena Fernández, Experticia: 35, Opinión: 8
-Alberto Morales, Experticia: 30, Opinión: 6
-Rafael Mendoza, Experticia: 24, Opinión: 6
-Julia Navarro, Experticia: 2, Opinión: 7
-Verónica Castro, Experticia: 18, Opinión: 6
-Lorena Blanco, Experticia: 6, Opinión: 6
-Gloria Silva, Experticia: 23, Opinión: 7
-Carmen Ramírez, Experticia: 33, Opinión: 7
-Rosa Flores, Experticia: 4, Opinión: 8
-Héctor Ríos, Experticia: 22, Opinión: 9
-Francisco Ortega, Experticia: 9, Opinión: 9
+Carlos López, Experticia: 7, Opinión: 6
+Marta Díaz, Experticia: 2, Opinión: 5
+Ana González, Experticia: 6, Opinión: 9
+Laura Morales, Experticia: 5, Opinión: 7
+Luis García, Experticia: 4, Opinión: 8
+Pedro Sánchez, Experticia: 3, Opinión: 6
+Elena Torres, Experticia: 1, Opinión: 7
+Jorge Ramírez, Experticia: 1, Opinión: 6
+Fernando Ramírez, Experticia: 9, Opinión: 8
+Lucía Pérez, Experticia: 8, Opinión: 7
 
 
-{5, 12, 25, 32, 40}
-{1, 8, 19, 27, 34}
+{3, 7}
+{8, 4, 10}
 
 
-{2, 14, 18, 29, 37}
-
-
-{4, 10, 22, 30, 39}
-{6, 11, 21, 28, 35}
-{3, 13, 20, 33, 36}
-
-
-{7, 15, 23, 31, 38}
-{9, 16, 24, 26, 17}
+{1, 6}
+{2, 9, 5}
