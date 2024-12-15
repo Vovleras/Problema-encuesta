@@ -1,0 +1,18 @@
+Elena Torres, Experticia: 1, Opinión: 7
+Jorge Ramírez, Experticia: 1, Opinión: 6
+Marta Díaz, Experticia: 2, Opinión: 5
+Pedro Sánchez, Experticia: 3, Opinión: 6
+Luis García, Experticia: 4, Opinión: 8
+Laura Morales, Experticia: 5, Opinión: 7
+Ana González, Experticia: 6, Opinión: 9
+Carlos López, Experticia: 7, Opinión: 6
+Lucía Pérez, Experticia: 8, Opinión: 7
+Fernando Ramírez, Experticia: 9, Opinión: 8
+
+
+{3, 7}
+{8, 4, 10}
+
+
+{1, 6}
+{2, 9, 5}
