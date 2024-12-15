@@ -38,15 +38,6 @@ class Pregunta:
     
     def __repr__(self):
         return f"({self.nombre}, {self.encuestados})"
-
-    """ def promedio_opinion(self):
-        print(f"Calculando promedio de opinión para la pregunta: {self.nombre}")
-        if self.encuestados:
-            print(f"Encuestados: {[enc.nombre for enc in self.encuestados]}")
-        return sum([enc.opinion for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0
-
-    def promedio_experticia(self):
-        return sum([enc.experticia for enc in self.encuestados]) / len(self.encuestados) if self.encuestados else 0 """
     
     def __lt__(self, other):
         if self.promedio_opinion != other.promedio_opinion:
